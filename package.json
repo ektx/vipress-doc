@@ -1,0 +1,23 @@
+{
+  "name": "vipress-doc",
+  "version": "0.0.0",
+  "description": "vipress 使用文档",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vipress -p 9000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.qixin007.com/kgp/atlas/vipress-doc.git"
+  },
+  "keywords": [
+    "vipress",
+    "markdown",
+    "vue"
+  ],
+  "author": "wenlong",
+  "license": "MIT",
+  "dependencies": {
+    "@intsig/vipress": "^0.6.0"
+  }
+}
