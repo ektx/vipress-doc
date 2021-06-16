@@ -23,6 +23,19 @@ export default [
         to: '/docs/setting'
       }
     ]
+  },
+  {
+    label: '功能',
+    children: [
+      {
+        label: '文档',
+        to: '/docs/doc'
+      },
+      {
+        label: '扩展',
+        to: '/docs/expand'
+      }
+    ]
   }
 ]
   

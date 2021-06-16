@@ -70,3 +70,21 @@ lang: 'zh-CN'
 // 使用 docs/setting.md 为首页
 homeRoute: '/docs/setting'
 ```
+
+## 目录设置
+
+文件位置: **.vipress/menu.js**
+
+文档创建之后，并不会自动在目录上显示，需要手动添加到目录中。
+
+格式如下：
+
+```ts
+interface menu {
+  label: string,
+  to?: string,
+  children?: menu[]
+}
+```
+
+> to 与 children 只能 2 选 1。
