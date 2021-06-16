@@ -16,7 +16,7 @@ npm i @intsig/vipress
 
 ## 添加快捷指令
 
-在 package.json 中添加如下命令，`-p` 用于指定启动的服务商品。
+在 package.json 中添加如下命令，`-p` 用于指定启动的服务端口。
 
 ```json
 {
