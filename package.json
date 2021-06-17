@@ -17,7 +17,7 @@
   ],
   "author": "wenlong",
   "license": "MIT",
-  "dependencies": {
-    "@intsig/vipress": "^0.6.1"
+  "devDependencies": {
+    "@intsig/vipress": "^0.6.2"
   }
 }
