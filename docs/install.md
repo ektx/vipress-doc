@@ -63,3 +63,59 @@ npm run dev
 ```
 
 使用如上命令就可以启动文档服务了，默认进入欢迎页面。下一节，将介绍如何配制我们的菜单与目录。
+
+
+## 打包
+
+在 package.json 中添加如下命令
+
+```diff
+   "scripts": {
++    "dev": "vipress -p 9000",
++    "build: "vipress build"
+   }
+```
+
+运行打包功能 **`npm run build`**
+
+### 测试打包
+
+将打包生成后的 **dist** 目录复制到你的静态服务器根目录下。
+
+下面我们用 docker 来运行一个 nginx 服务器，然后将打包后的内容放到 html 目录中测试。
+
+docker-compose.yaml 文件配制如下:
+
+```sh
+version: '3.4'
+
+services:
+  vipressbuild:
+    restart: always
+    image: nginx:latest
+    container_name: "nginx"
+    ports:
+      - "8000:80"
+    environment:
+      - NGINX_PORT=80
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./html:/usr/share/nginx/html
+```
+
+conf.d/default.conf 配制如下:
+```sh
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html/;
+        index  index.html index.htm;
+        # history mode
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
+
+复制完内容后，通过 [localhost:8000](http://localhost:8000/) 访问我们的打包文档就可以了。

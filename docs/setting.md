@@ -71,6 +71,26 @@ lang: 'zh-CN'
 homeRoute: '/docs/setting'
 ```
 
+### build
+
+- type `Object`
+
+打包设置。
+
+#### base
+
+- type `String`
+
+公共基础路径。
+
+#### outDir
+
+- type `String`
+- default `dist`
+
+指定输出目录，默认 dist。
+
+
 ## 目录设置
 
 文件位置: **.vipress/menu.js**
