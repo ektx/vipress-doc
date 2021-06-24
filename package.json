@@ -4,7 +4,8 @@
   "description": "vipress 使用文档",
   "main": "index.js",
   "scripts": {
-    "dev": "vipress -p 9000"
+    "dev": "vipress -p 9000",
+    "build": "vipress build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
   ],
   "author": "wenlong",
   "license": "MIT",
-  "devDependencies": {
-    "@intsig/vipress": "^0.6.2"
+  "dependencies": {
+    "@intsig/vipress": "^0.7.1"
   }
 }
