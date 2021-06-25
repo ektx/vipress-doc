@@ -19,6 +19,6 @@
   "author": "wenlong",
   "license": "MIT",
   "dependencies": {
-    "@intsig/vipress": "^0.7.1"
+    "@intsig/vipress": "^0.7.2"
   }
 }

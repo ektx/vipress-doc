@@ -5,6 +5,6 @@ export default {
   lang: 'zh-CN',
   icon: '/favicon.ico',
   // 首页路由地址
-  // homeRoute: '',
+  homeRoute: '/README',
 }
   

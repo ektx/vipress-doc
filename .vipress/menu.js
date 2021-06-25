@@ -11,7 +11,7 @@ export default [
     label: '欢迎',
     children: [
       {
-        label: '欢迎',
+        label: '简介',
         to: '/'
       },
       {
