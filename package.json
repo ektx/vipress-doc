@@ -2,7 +2,6 @@
   "name": "vipress-doc",
   "version": "0.0.0",
   "description": "vipress 使用文档",
-  "main": "index.js",
   "scripts": {
     "dev": "vipress -p 9000",
     "build": "vipress build"
@@ -19,6 +18,7 @@
   "author": "wenlong",
   "license": "MIT",
   "dependencies": {
-    "@intsig/vipress": "^0.7.2"
+    "@intsig/vipress": "^0.8.0",
+    "vipress-template-vue3": "^0.1.0"
   }
 }

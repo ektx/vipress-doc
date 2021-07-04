@@ -6,16 +6,16 @@
  *   children?: menu[]
  * }
  */
-export default [
+export const menu = [
   {
-    label: '欢迎',
+    label: '指引',
     children: [
       {
         label: '简介',
         to: '/'
       },
       {
-        label: '安装与使用',
+        label: '开始',
         to: '/docs/install'
       },
       {
