@@ -32,7 +32,23 @@
 
 ## 页面功能配制
 
+完整的配制效果如下：
+
+```js
+const { vue3 } = require('vipress-template-vue3')
+
+module.exports = {
+  title: 'vipress-doc',
+  lang: 'zh-CN',
+  icon: '/favicon.ico',
+  homeRoute: '/README',
+  plugin: [ vue3() ]
+}
+```
+
 介绍 **.vipress/congif.js** 中的参数功能与修改。
+
+> 配制修改后，需要重启服务生效。
 ### title 
 
 - type `String`
@@ -90,6 +106,11 @@ homeRoute: '/docs/setting'
 
 指定输出目录，默认 dist。
 
+### plugin
+
+- type `Array`
+
+插件使用，接受插件方法。
 
 ## 目录设置
 

@@ -1,4 +1,8 @@
-# 安装与使用
+# 开始
+
+> **兼容性注意**
+>
+> vipress 需要 Node.js 版本 >= 12.0.0。
 
 ## 修改 NPM 源
 
@@ -10,9 +14,19 @@ registry=http://npm.qixin007.com
 
 ## 安装 vipress 依赖
 
+使用 NPM:
 ```sh
-npm i @intsig/vipress
+npm i @intsig/vipress vipress-template-vue3
 ```
+
+使用 Yarn:  
+```sh
+yarn add @intsig/vipress vipress-template-vue3
+```
+
+目前支持的模板有：
+
+- [vipress-template-vue3]() vue3 模板
 
 ## 添加快捷指令
 
@@ -35,23 +49,13 @@ npm i @intsig/vipress
   "name": "vipress-doc",
   "version": "0.0.0",
   "description": "vipress 使用文档",
-  "main": "index.js",
   "scripts": {
     "dev": "vipress -p 9000"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://git.qixin007.com/kgp/atlas/vipress-doc.git"
-  },
-  "keywords": [
-    "vipress",
-    "markdown",
-    "vue"
-  ],
-  "author": "wenlong",
   "license": "MIT",
   "dependencies": {
-    "@intsig/vipress": "^0.6.0"
+    "@intsig/vipress": "^0.8.0",
+    "vipress-template-vue3": "^0.1.0"
   }
 }
 ```
@@ -62,8 +66,7 @@ npm i @intsig/vipress
 npm run dev
 ```
 
-使用如上命令就可以启动文档服务了，默认进入欢迎页面。下一节，将介绍如何配制我们的菜单与目录。
-
+使用如上命令就可以启动文档服务了，默认进入欢迎页面。
 
 ## 打包
 
