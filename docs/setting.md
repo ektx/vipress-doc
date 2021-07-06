@@ -96,15 +96,16 @@ homeRoute: '/docs/setting'
 #### base
 
 - type `String`
+- default `/`
 
-公共基础路径。
+公共基础路径。12
 
 #### outDir
 
 - type `String`
 - default `dist`
 
-指定输出目录，默认 dist。
+指定输出目录，默认 dist 目录。
 
 ### plugin
 

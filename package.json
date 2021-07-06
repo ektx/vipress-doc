@@ -19,6 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "@intsig/vipress": "^0.8.0",
-    "vipress-template-vue3": "^0.1.0"
+    "vipress-template-vue3": "^0.1.1"
   }
 }
