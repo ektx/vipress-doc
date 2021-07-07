@@ -4,14 +4,6 @@
 >
 > vipress 需要 Node.js 版本 >= 12.0.0。
 
-## 修改 NPM 源
-
-可以通过添加 **.npmrc** 文件，自定义项目的源地址。
-
-```sh
-registry=http://npm.qixin007.com
-```
-
 ## 安装 vipress 依赖
 
 使用 NPM:
@@ -23,6 +15,10 @@ npm i @intsig/vipress vipress-template-vue3
 ```sh
 yarn add @intsig/vipress vipress-template-vue3
 ```
+
+> 注意  
+> 你需要先设置 npm 包地址为： http://npm.qixin007.com
+
 
 目前支持的模板有：
 

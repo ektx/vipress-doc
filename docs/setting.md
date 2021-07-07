@@ -107,11 +107,64 @@ homeRoute: '/docs/setting'
 
 指定输出目录，默认 dist 目录。
 
+---
+
 ### plugin
 
 - type `Array`
 
 插件使用，接受插件方法。
+
+---
+
+### project
+
+- type `Object`
+
+此项返回的是项目的基础信息。
+
+#### root
+
+- type `String`
+- 只读
+
+返回当前项目根目录绝对位置。
+
+#### serverDir
+
+- type `String`
+- 只读
+
+返回当前项目中 **.vipress** 的绝对位置。
+
+#### mdPagesDir
+
+- type `String`
+- 只读
+
+返回当前项目所有 markdown 解析后生成的 vue 文件的绝对位置。
+
+#### srcDir
+
+- type `String`
+- 只读
+
+返回当前项目 **.vipress/src** 目录的绝对位置。
+
+#### publicDir
+
+- type `String`
+- 只读
+
+返回当前项目的 **publuc** 目录绝对位置。
+
+#### configPath
+
+- type `String`
+- 只读
+
+返回当前项目的配制文件所在有绝对路径。
+
 
 ## 目录设置
 

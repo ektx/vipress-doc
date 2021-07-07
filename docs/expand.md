@@ -38,9 +38,9 @@ const msg = 'Hello Vue'
 ```
 :::
 
-### 引入 vue 文件方式
+### 文件引用
 
-同时，你也可以通过 [文档中引用](/docs/doc#文件引用) vue 文件。不过，在使用引用 vue 文件时，你需要按以下的目录结构来约束你的文件。
+同时，你也可以通过 [【文档中引用】](/docs/doc#文件内嵌) vue 文件。不过，在使用引用 vue 文件时，你需要按以下的目录结构来约束你的文件。
 
 ```
 ---- project            # 项目根目录
@@ -89,3 +89,15 @@ import * as PIXI from 'pixi.js'
 &#96;&#96;&#96;
 :::
 ```
+
+## 虚拟文件引用
+
+vipress 将项目的默认基础信息，设置成了一个单独的虚拟文件，在开发时，你可以通过以下方式引用。
+
+```js
+import config from '@@vipress-plugin-config'
+
+console.log(config)
+```
+
+具体返回的信息为你的设置信息，你可以访问 [【设置】](/docs/setting) 查看更多信息。
