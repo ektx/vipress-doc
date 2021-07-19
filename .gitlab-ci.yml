@@ -4,7 +4,7 @@ variables:
   DEST_IP: "172.16.74.62"
   TEST_DST_FOLDER_PREFIX: "home_"
 
-  ONLINE_DST_FOLDER: "dataclean_r2m"
+  ONLINE_DST_FOLDER: "vipress_docs"
 
 before_script:
   - pwd
@@ -21,7 +21,7 @@ init_run:
     - dst_dir="${DEST_IP}::${TEST_DST_FOLDER_PREFIX}${user_name}"
     - sync_cmd="/usr/bin/rsync -avczP --delete --exclude '.git' --port=${DST_PORT}  ../${SRC_FOLDER} ${dst_dir}"
     - echo "${sync_cmd}"
-    # - eval "${sync_cmd}"
+    - eval "${sync_cmd}"
   # only:
   #   - /^pre-.*$/
 
