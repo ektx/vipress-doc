@@ -13,7 +13,7 @@ init_run_job:
   stage: init
   script:
     - DIR=$(basename "$PWD")
-    - echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
-    - cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
-    - ls -R ../${CUST_APP_TAG_NAME}
-    - /usr/bin/rsync -avzP --delete  --port=5757  ../$CUST_APP_TAG_NAME $MID_RSYNC_PWD@$DEST_IP::$DST_FOLDER  --exclude ".git"
+    #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
+    #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
+    - ls ${DIR}
+    - /usr/bin/rsync -avzP --delete  --port=5757  $DIR $MID_RSYNC_PWD@$DEST_IP::$DST_FOLDER  --exclude ".git"
