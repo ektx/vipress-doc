@@ -16,5 +16,5 @@ init_run_job:
     - echo "$DIR"
     #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
     #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
-    - ls ${DIR}
+    - echo `pwd`
     - /usr/bin/rsync -avzP --delete  --port=5757  $DIR $MID_RSYNC_PWD@$DEST_IP::$DST_FOLDER  --exclude ".git"
