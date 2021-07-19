@@ -8,9 +8,9 @@ variables:
 
 stages:
   - build
-  # - deploy
+  # - deploys
 
-build_jon:
+build_job:
   stage: build
   script: 
     - export
@@ -19,13 +19,14 @@ build_jon:
     - ls .
 
 
-deploy_run_job:
-  stage: deploy
-  script:
-    #- DIR=$(basename "$PWD")
-    #- echo "$DIR"
-    #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
-    #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
-    - echo `pwd`
-    - ls .
-    - /usr/bin/rsync -avzP --delete  --port=5757  ../ $DEST_IP::$DST_FOLDER  --exclude ".git"
+
+# deploy_run_job:
+#   stage: deploy
+#   script:
+#     #- DIR=$(basename "$PWD")
+#     #- echo "$DIR"
+#     #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
+#     #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
+#     - echo `pwd`
+#     - ls .
+#     - /usr/bin/rsync -avzP --delete  --port=5757  ../ $DEST_IP::$DST_FOLDER  --exclude ".git"
