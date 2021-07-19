@@ -1,37 +1,19 @@
 variables:
-  SRC_FOLDER: ${CI_PROJECT_NAME}
   DST_PORT: "5757"
   DEST_IP: "172.16.74.62"
-  TEST_DST_FOLDER_PREFIX: "home_"
+  DST_RSYNC_PWD: "data_solution"             # 目标机 /etc/rsyncd.secrets
+  CUST_APP_TAG_NAME: $CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME:$CI_COMMIT_TAG   # runner机上的文件夹标识
+  DST_FOLDER: "vipressdoc"
 
-  ONLINE_DST_FOLDER: "vipress_docs"
-
-before_script:
-  - pwd
 
 stages:
   - init
 
-init_run:
+init_run_job:
   stage: init
   script:
-    - ls /usr/
-    - ls /usr/bin/rsync
-    - user_name=`echo $GITLAB_USER_EMAIL |awk -F'@' '{print $1}'`
-    - dst_dir="${DEST_IP}::${TEST_DST_FOLDER_PREFIX}${user_name}"
-    - sync_cmd="/usr/bin/rsync -avczP --delete --exclude '.git' --port=${DST_PORT}  ../${SRC_FOLDER} ${dst_dir}"
-    - echo "${sync_cmd}"
-    - eval "${sync_cmd}"
-  # only:
-  #   - /^pre-.*$/
-
-
-init_online:
-  stage: init
-  script:
-      - echo "start launch_code"
-      - echo "${SRC_FOLDER}-${ONLINE_DST_FOLDER}-${DST_PORT}"
-      - /bin/bash .gitlab_code_launch.sh "${SRC_FOLDER}" "${ONLINE_DST_FOLDER}" "${DST_PORT}"
-  # only:
-  #     - /^versions-.*$/
-  allow_failure: false
+    - DIR=$(basename "$PWD")
+    - echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
+    - cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
+    - ls -R ../${CUST_APP_TAG_NAME}
+    - /usr/bin/rsync -avzP --delete  --port=5757  ../$CUST_APP_TAG_NAME $MID_RSYNC_PWD@$DEST_IP::$DST_FOLDER  --exclude ".git"
