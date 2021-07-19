@@ -30,6 +30,7 @@ init_online:
   stage: init
   script:
       - echo "start launch_code"
+      - echo "${SRC_FOLDER}-${ONLINE_DST_FOLDER}-${DST_PORT}"
       - /bin/bash .gitlab_code_launch.sh "${SRC_FOLDER}" "${ONLINE_DST_FOLDER}" "${DST_PORT}"
   # only:
   #     - /^versions-.*$/
