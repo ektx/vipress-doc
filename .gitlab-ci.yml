@@ -11,7 +11,6 @@ stages:
 init_run:
   stage: init
   script:
-    - node -V
     - user_name=`echo $GITLAB_USER_EMAIL |awk -F'@' '{print $1}'`
     - dst_dir="${DEST_IP}::${TEST_DST_FOLDER_PREFIX}${user_name}"
     - sync_cmd="/usr/bin/rsync -avczP --delete --exclude '.git' --port=${DST_PORT}  ../${SRC_FOLDER} ${dst_dir}"
