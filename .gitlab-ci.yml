@@ -18,4 +18,4 @@ init_run_job:
     #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
     - echo `pwd`
     - ls .
-    - /usr/bin/rsync -avzP --delete  --port=5757  ../ $MID_RSYNC_PWD@$DEST_IP::$DST_FOLDER  --exclude ".git"
+    - /usr/bin/rsync -avzP --delete  --port=5757  ../ $DEST_IP::$DST_FOLDER  --exclude ".git"
