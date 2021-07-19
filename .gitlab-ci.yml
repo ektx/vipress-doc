@@ -7,10 +7,20 @@ variables:
 
 
 stages:
-  - init
+  - build
+  # - deploy
 
-init_run_job:
-  stage: init
+build_jon:
+  stage: build
+  script: 
+    - export
+    - npm i
+    - npm run build
+    - ls .
+
+
+deploy_run_job:
+  stage: deploy
   script:
     #- DIR=$(basename "$PWD")
     #- echo "$DIR"
