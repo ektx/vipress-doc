@@ -1,4 +1,5 @@
 variables:
+  DST_PORT: "5757"
   DEST_IP: "172.16.74.62"
   TEST_DST_FOLDER_PREFIX: "home_"
 
@@ -11,6 +12,7 @@ stages:
 init_run:
   stage: init
   script:
+    - ls /usr/
     - ls /usr/bin/rsync
     - user_name=`echo $GITLAB_USER_EMAIL |awk -F'@' '{print $1}'`
     - dst_dir="${DEST_IP}::${TEST_DST_FOLDER_PREFIX}${user_name}"
