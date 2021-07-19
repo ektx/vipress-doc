@@ -13,6 +13,7 @@ init_run_job:
   stage: init
   script:
     - DIR=$(basename "$PWD")
+    - echo "$DIR"
     #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
     #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
     - ls ${DIR}
