@@ -1,12 +1,13 @@
-const { vue3 } = require('vipress-template-vue3')
+const vuePlugin = require('@vitejs/plugin-vue')
 
 module.exports = {
   // 标题
   title: 'vipress-doc',
   lang: 'zh-CN',
   icon: '/favicon.ico',
+  template: 'vue3',
   // 首页路由地址
   homeRoute: '/README',
-  plugin: [ vue3() ]
+  plugins: [ vuePlugin() ]
 }
   

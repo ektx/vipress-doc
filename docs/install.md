@@ -4,80 +4,37 @@
 >
 > vipress 需要 Node.js 版本 >= 12.0.0。
 
-## 安装 vipress 依赖
+## 安装
 
-使用 NPM:
-```sh
-npm i @intsig/vipress vipress-template-vue3
-```
-
-使用 Yarn:  
-```sh
-yarn add @intsig/vipress vipress-template-vue3
-```
-
-> 注意  
-> 你需要先设置 npm 包地址为： http://npm.qixin007.com
-
-
-目前支持的模板有：
-
-- [vipress-template-vue3]() vue3 模板
-
-## 添加快捷指令
-
-在 package.json 中添加如下命令，`-p` 用于指定启动的服务端口。
-
-```json
-{
-  ...
-  "scripts": {
-    "dev": "vipress -p 9000"
-  },
-  ...
-}
-```
-
-最后，完整的 package.json 类似如下:
-
-```json
-{
-  "name": "vipress-doc",
-  "version": "0.0.0",
-  "description": "vipress 使用文档",
-  "scripts": {
-    "dev": "vipress -p 9000"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@intsig/vipress": "^0.8.0",
-    "vipress-template-vue3": "^0.1.0"
-  }
-}
-```
-
-## 运行
+用于协助项目文档生成。
 
 ```sh
+# npm 6.x
+npm init @vipress/app my-app -t vue3
+
+# npm 7+, 需要额外的双横线：
+npm init @vipress/app my-app -- --t vue3
+
+# yarn
+yarn create @vipress/app my-app --t vue3
+```
+
+支持的模板有：
+
+- vue3
+- vue2
+
+## 运行与打包
+
+```sh
+# 运行服务
 npm run dev
+
+# 打包服务
+npm run build
 ```
 
-使用如上命令就可以启动文档服务了，默认进入欢迎页面。
-
-## 打包
-
-在 package.json 中添加如下命令
-
-```diff
-   "scripts": {
-+    "dev": "vipress -p 9000",
-+    "build: "vipress build"
-   }
-```
-
-运行打包功能 **`npm run build`**
-
-### 测试打包
+## 测试打包
 
 将打包生成后的 **dist** 目录复制到你的静态服务器根目录下。
 
