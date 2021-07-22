@@ -12,7 +12,7 @@ stages:
 
 build_job:
   stage: build
-  tag: 
+  tags: 
     - "SSGRunnerSitA-172-16-74-63"
   script: 
     - export
@@ -25,7 +25,7 @@ build_job:
 
 deploy_run_job:
   stage: deploy
-  tag: 
+  tags: 
     - "SSGRunnerSitA-172-16-74-63"
   script:
     #- DIR=$(basename "$PWD")
