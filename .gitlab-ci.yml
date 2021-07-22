@@ -28,10 +28,10 @@ deploy_run_job:
   tags: 
     - "SSGRunnerSitA-172-16-74-63"
   script:
-    #- DIR=$(basename "$PWD")
-    #- echo "$DIR"
-    #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
-    #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
+    - DIR=$(basename "$PWD")
+    - echo "$DIR"
+    - echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
+    - cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
     - echo `pwd`
     - ls .
     - /usr/bin/rsync -avzP --delete  --port=5757  ./dist/ $DEST_IP::$DST_FOLDER  --exclude ".git"
