@@ -12,6 +12,8 @@ stages:
 
 build_job:
   stage: build
+  tag: 
+    - "SSGRunnerSitA-172-16-74-63"
   script: 
     - export
     - npm i
@@ -20,8 +22,11 @@ build_job:
 
 
 
+
 deploy_run_job:
   stage: deploy
+  tag: 
+    - "SSGRunnerSitA-172-16-74-63"
   script:
     #- DIR=$(basename "$PWD")
     #- echo "$DIR"
