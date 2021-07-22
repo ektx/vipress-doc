@@ -1,6 +1,6 @@
 variables:
   DST_PORT: "5757"
-  DEST_IP: "172.16.74.62"
+  DEST_IP: "10.2.19.77"
   DST_RSYNC_PWD: "data_solution"             # 目标机 /etc/rsyncd.secrets
   CUST_APP_TAG_NAME: $CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME:$CI_COMMIT_TAG   # runner机上的文件夹标识
   DST_FOLDER: "vipressdoc"
@@ -20,13 +20,13 @@ build_job:
 
 
 
-# deploy_run_job:
-#   stage: deploy
-#   script:
-#     #- DIR=$(basename "$PWD")
-#     #- echo "$DIR"
-#     #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
-#     #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
-#     - echo `pwd`
-#     - ls .
-#     - /usr/bin/rsync -avzP --delete  --port=5757  ../ $DEST_IP::$DST_FOLDER  --exclude ".git"
+deploy_run_job:
+  stage: deploy
+  script:
+    #- DIR=$(basename "$PWD")
+    #- echo "$DIR"
+    #- echo "backup ${DIR} to ${CUST_APP_TAG_NAME}"
+    #- cp -rf ../${DIR} ../${CUST_APP_TAG_NAME}
+    - echo `pwd`
+    - ls .
+    - /usr/bin/rsync -avzP --delete  --port=5757  ../ $DEST_IP::$DST_FOLDER  --exclude ".git"
