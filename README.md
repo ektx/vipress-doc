@@ -1,8 +1,8 @@
-# vipress
+# ViPress
 
 ## 什么是 ViPress ?
 
-ViPress 是一款为 Vue2(开发中)/Vue3 组件开发场景而生的文档工具，支持 Markdown 文档生成。
+ViPress 是一款为 Vue2/Vue3 组件开发场景而生的文档工具，支持 Markdown 文档生成。
 
 vipress 会自动根据 markdown 生成对应的文档和路由，同时支持配置一级导航和路由以满足自定义需求。
 
