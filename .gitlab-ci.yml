@@ -19,7 +19,8 @@ build_job:
     - npm i
     - npm run build
     - ls .
-
+  only:
+    - master
 
 
 
