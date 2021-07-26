@@ -1,5 +1,5 @@
 // ‼️ 注意 此文件自动创建，请务手动修改内容
-// 创建时间: Sat Jul 24 2021 18:45:06 GMT+0800 (中国标准时间)
+// 创建时间: Mon Jul 26 2021 09:30:10 GMT+0800 (中国标准时间)
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../../md-pages/README/index.vue";
@@ -36,11 +36,6 @@ export default createRouter({
       path: "/docs/setting",
       name: "view-docs-setting",
       component: () => import("../../md-pages/docs/setting/index.vue"),
-    },
-    {
-      path: "/docs/test",
-      name: "view-docs-test",
-      component: () => import("../../md-pages/docs/test/index.vue"),
     },
   ],
 });
