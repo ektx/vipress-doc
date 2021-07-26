@@ -4,45 +4,53 @@
 
 ```
 ---- project            # 项目根目录
-  ├──── /.vipress       # 生成的环境目录（自动生成）
-  │  ├──── /md-pages    # markdown 文件转化目录
-  │  ├──── /src         # 模板目录
-  │  ├──── .gitignore   # 忽略文件
-  │  ├──── config.js    # 项目配制文件
-  │  └──── menu.js      # 菜单配制文件
+  ├──── /.vipress       # 生成的环境目录
+  │  ├──── /md-pages    # markdown 文件转化目录(不用提交)
+  │  ├──── /src         # VUE 模板目录
+  │  ├──── server.js    # 服务端配制文件
+  │  └──── client.js    # 客户端配制文件
   │  
-  ├──── public          # 静态文件地址（自建）
-  ├──── package.json    # 依赖包
+  ├──── public          # 静态文件地址
+  ├──── package.json    # 项目的清单
+  ├──── .gitignore      # 忽略文件
   └──── ...             # 其它你自己的文件内容
 ```
 
-## 配制服务端口
+## Vipress 配制命令
 
-服务的端口设置可以在 package.json 的脚本命令处设置，如设置启动的端口为 9000。默认端口为 12345 。
+- p `number` 端口号
+- c `boolean` 验证控制
 
-```json
+package.json 示例：
+
+```js
 {
   ...
   "scripts": {
-    "dev": "vipress -p 9000"
+    // 在 9000 端口启动服务并对 MD 文件的完整性验证
+    "dev": "vipress -p 9000 -c"
   },
   ...
 }
 ```
 
-## 页面功能配制
+## 客户端配制
 
 完整的配制效果如下：
 
 ```js
-const { vue3 } = require('vipress-template-vue3')
-
+...
 module.exports = {
-  title: 'vipress-doc',
-  lang: 'zh-CN',
-  icon: '/favicon.ico',
-  homeRoute: '/README',
-  plugin: [ vue3() ]
+  title: 'PROJECT_NAME',  // 标题
+  lang: 'zh-CN',          // 网页语言
+  icon: '/favicon.ico',   // icon
+  template: 'vue3',
+  homeRoute: '',          // 首页路由地址
+  build: {                // 打包设置
+    base: '/',            // 公共基础路径
+    outDir: 'dist'        // 指定输出目录，默认 dist
+  },
+  plugins: [ vuePlugin() ]          // 使用的模板信息
 }
 ```
 
@@ -51,34 +59,38 @@ module.exports = {
 > 配制修改后，需要重启服务生效。
 ### title 
 
-- type `String`
+- 类型 `String`
 
 标题配制；服务在启动时，默认使用文件夹为标题。
 
 ```js
-title: 'vipress-doc',
+title: 'PROJECT_NAME',
 ```
 
 ### lang
 
-- type `String`
+- 类型 `String`
+- default `zh-CN`
 
 网页的语言，通常你并不需要配制此项。
 
-```js
-// 默认
-lang: 'zh-CN'
-```
-
 ### icon
 
-- type `Path`
+- 类型 `Path`
+- default `/favicon.ico`
 
 指定网站的图标，你可以将它设置为一个网络地址或是 public 目录下的内容。
 
+### template
+
+- 类型 `String`
+
+使用的模板，只读，不可修改。
+
+
 ### homeRoute
 
-- type `String`
+- 类型 `String`
 
 指定默认的首页。
 
@@ -89,78 +101,76 @@ homeRoute: '/docs/setting'
 
 ### build
 
-- type `Object`
+- 类型 `Object`
 
 打包设置。
 
-#### base
+#### build.base
 
-- type `String`
+- 类型 `String`
 - default `/`
 
 公共基础路径。12
 
-#### outDir
+#### build.outDir
 
-- type `String`
+- 类型 `String`
 - default `dist`
 
 指定输出目录，默认 dist 目录。
 
----
 
 ### plugin
 
-- type `Array`
+- 类型 `Array`
 
 插件使用，接受插件方法。
 
----
 
 ### project
 
-- type `Object`
+- 类型 `Object`
 
 此项返回的是项目的基础信息。
 
-#### root
+#### project.root
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目根目录绝对位置。
 
-#### serverDir
+#### project.serverDir
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目中 **.vipress** 的绝对位置。
 
-#### mdPagesDir
+#### project.mdPagesDir
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目所有 markdown 解析后生成的 vue 文件的绝对位置。
 
-#### srcDir
+#### project.srcDir
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目 **.vipress/src** 目录的绝对位置。
 
-#### publicDir
+#### project.publicDir
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目的 **publuc** 目录绝对位置。
 
-#### configPath
+#### project.configPath
 
-- type `String`
+- 类型 `String`
 - 只读
 
 返回当前项目的配制文件所在有绝对路径。

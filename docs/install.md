@@ -6,23 +6,25 @@
 
 ## 安装
 
+
 用于协助项目文档生成。
 
 ```sh
 # npm 6.x
-npm init @vipress/app my-app -t vue3
+npm init @vipress/app@latest my-app -t vue3
 
 # npm 7+, 需要额外的双横线：
-npm init @vipress/app my-app -- --t vue3
+npm init @vipress/app@latest my-app -- --t vue3
 
 # yarn
-yarn create @vipress/app my-app --t vue3
+yarn create @vipress/app@latest my-app --t vue3
 ```
 
 支持的模板有：
 
-- vue3
+- vue3(不指定时，默认模板)
 - vue2
+
 
 ## 运行与打包
 
