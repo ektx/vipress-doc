@@ -1,5 +1,5 @@
 // ‼️ 注意 此文件自动创建，请务手动修改内容
-// 创建时间: Mon Jul 26 2021 18:10:52 GMT+0800 (中国标准时间)
+// 创建时间: Mon Jul 26 2021 21:12:25 GMT+0800 (中国标准时间)
 import { createRouter, createWebHistory } from "vue-router";
 
 import Home from "../../md-pages/README/index.vue";
