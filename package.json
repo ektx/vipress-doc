@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "vipress 使用文档",
   "scripts": {
-    "dev": "vipress -p 9000",
+    "dev": "vipress -p 9000 -c",
     "build": "vipress build"
   },
   "repository": {
