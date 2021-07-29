@@ -8,7 +8,6 @@ variables:
 
 stages:
   - build
-  - deploy
 
 build_job:
   stage: build
@@ -19,19 +18,6 @@ build_job:
     - npm i
     - npm run build
     - ls .
+    - /usr/bin/rsync -avzP --delete  --port=5757  dist $DEST_IP::$DST_FOLDER  --exclude ".git"
   only:
     - master
-
-
-
-deploy_run_job:
-  stage: deploy
-  tags: 
-    - "SSGRunnerSitA-172-16-74-63"
-  artifacts:
-    untracked: true
-  script:
-    - echo `pwd`
-    - ls .
-    - /usr/bin/rsync -avzP --delete  --port=5757  dist $DEST_IP::$DST_FOLDER  --exclude ".git"
-  when: manual
