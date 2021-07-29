@@ -28,6 +28,10 @@ deploy_run_job:
   stage: deploy
   tags: 
     - "SSGRunnerSitA-172-16-74-63"
+  artifacts:
+    untracked: true
+    path:
+      - dist/
   script:
     - echo `pwd`
     - ls .
