@@ -18,6 +18,6 @@ build_job:
     - npm i
     - npm run build
     - ls .
-    - /usr/bin/rsync -avzP --delete  --port=5757  dist $DEST_IP::$DST_FOLDER  --exclude ".git"
+    - /usr/bin/rsync -avzP --delete  --port=5757  ./dist/ $DEST_IP::$DST_FOLDER  --exclude ".git"
   only:
     - master
