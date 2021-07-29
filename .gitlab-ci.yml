@@ -30,7 +30,7 @@ deploy_run_job:
     - "SSGRunnerSitA-172-16-74-63"
   artifacts:
     untracked: true
-    path:
+    paths:
       - dist/
   script:
     - echo `pwd`
