@@ -31,5 +31,5 @@ deploy_run_job:
   script:
     - echo `pwd`
     - ls .
-    - /usr/bin/rsync -avzP --delete  --port=5757  ./dist/ $DEST_IP::$DST_FOLDER  --exclude ".git"
+    - /usr/bin/rsync -avzP --delete  --port=5757  dist $DEST_IP::$DST_FOLDER  --exclude ".git"
   when: manual
