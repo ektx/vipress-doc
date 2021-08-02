@@ -17,7 +17,7 @@
 import Navs from './components/navs/index.vue'
 import Banner from './components/banner/index.vue'
 import { TOCData } from './store'
-import { menu } from '../menu.js'
+import { menu } from '../client.js'
 import config from '@@vipress-plugin-config'
 
 export default {
@@ -59,11 +59,6 @@ export default {
 
     .toc-box {
       padding: 0 0 0 20px;
-
-      .top-of-centent {
-        position: sticky;
-        top: 61px;
-      }
     }
   }
 

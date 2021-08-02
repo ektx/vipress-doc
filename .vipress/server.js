@@ -7,7 +7,7 @@ module.exports = {
   icon: '/favicon.ico',
   template: 'vue3',
   // 首页路由地址
-  homeRoute: '/README',
+  homeRoute: '/readme',
   plugins: [ vuePlugin() ]
 }
   

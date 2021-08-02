@@ -178,7 +178,7 @@ homeRoute: '/docs/setting'
 
 ## 目录设置
 
-文件位置: **.vipress/menu.js**
+文件位置: **.vipress/client.js**
 
 文档创建之后，并不会自动在目录上显示，需要手动添加到目录中。
 

@@ -76,8 +76,8 @@ export default {
 
 <style lang="less" scoped>
 .top-of-centent {
-  position: fixed;
-  top: 60px;
+  position: sticky;
+  top: 70px;
   right: 0;
   width: 200px;
 

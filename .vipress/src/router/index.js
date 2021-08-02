@@ -1,8 +1,8 @@
 // ‼️ 注意 此文件自动创建，请务手动修改内容
-// 创建时间: Mon Jul 26 2021 21:12:25 GMT+0800 (中国标准时间)
+// 创建时间: Mon Aug 02 2021 17:42:01 GMT+0800 (中国标准时间)
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from "../../md-pages/README/index.vue";
+import Home from "../../md-pages/readme/index.vue";
 
 export default createRouter({
   history: createWebHistory(),
@@ -13,9 +13,9 @@ export default createRouter({
       component: Home,
     },
     {
-      path: "/README",
-      name: "view-README",
-      component: () => import("../../md-pages/README/index.vue"),
+      path: "/docs/build",
+      name: "view-docs-build",
+      component: () => import("../../md-pages/docs/build/index.vue"),
     },
     {
       path: "/docs/doc",
@@ -33,9 +33,19 @@ export default createRouter({
       component: () => import("../../md-pages/docs/install/index.vue"),
     },
     {
+      path: "/docs/readme",
+      name: "view-docs-readme",
+      component: () => import("../../md-pages/docs/readme/index.vue"),
+    },
+    {
       path: "/docs/setting",
       name: "view-docs-setting",
       component: () => import("../../md-pages/docs/setting/index.vue"),
+    },
+    {
+      path: "/README",
+      name: "view-README",
+      component: () => import("../../md-pages/README/index.vue"),
     },
   ],
 });
