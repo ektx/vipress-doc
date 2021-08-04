@@ -5,7 +5,11 @@
       <Navs :value="menu" />
     </aside>
     <main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="fade-slide-y" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
       <div class="toc-box">
         <TOC :list="TOCData" :offsetTop="100"/>
       </div>
@@ -66,6 +70,19 @@ export default {
     &::-webkit-scrollbar {
       width: 3px;
     }
+  }
+  .fade-slide-y-enter-active {
+    transition: all 0.3s ease;
+  }
+
+  .fade-slide-y-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .fade-slide-y-enter-from,
+  .fade-slide-y-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
   }
 }
 </style>

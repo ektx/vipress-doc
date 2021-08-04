@@ -1,51 +1,20 @@
-// ‼️ 注意 此文件自动创建，请务手动修改内容
-// 创建时间: Mon Aug 02 2021 17:42:01 GMT+0800 (中国标准时间)
 import { createRouter, createWebHistory } from "vue-router";
+import { routes } from './routes'
 
-import Home from "../../md-pages/readme/index.vue";
+const scrollBehavior = function (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({ top: 0 });
+        }, 500);
+      });
+    }
+  }
 
 export default createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      name: "_home_",
-      path: "/",
-      component: Home,
-    },
-    {
-      path: "/docs/build",
-      name: "view-docs-build",
-      component: () => import("../../md-pages/docs/build/index.vue"),
-    },
-    {
-      path: "/docs/doc",
-      name: "view-docs-doc",
-      component: () => import("../../md-pages/docs/doc/index.vue"),
-    },
-    {
-      path: "/docs/expand",
-      name: "view-docs-expand",
-      component: () => import("../../md-pages/docs/expand/index.vue"),
-    },
-    {
-      path: "/docs/install",
-      name: "view-docs-install",
-      component: () => import("../../md-pages/docs/install/index.vue"),
-    },
-    {
-      path: "/docs/readme",
-      name: "view-docs-readme",
-      component: () => import("../../md-pages/docs/readme/index.vue"),
-    },
-    {
-      path: "/docs/setting",
-      name: "view-docs-setting",
-      component: () => import("../../md-pages/docs/setting/index.vue"),
-    },
-    {
-      path: "/README",
-      name: "view-README",
-      component: () => import("../../md-pages/README/index.vue"),
-    },
-  ],
-});
+    history: createWebHistory(),
+    scrollBehavior,
+    routes
+})
