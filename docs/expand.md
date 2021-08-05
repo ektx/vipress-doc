@@ -13,13 +13,13 @@
 ```
 ::: codeBox
 &#96;&#96;&#96;vue
-&lt;template>
-  &lt;h1>{{ msg }}&lt;/h1>
-&lt;/template>
+&lt;template&gt;
+  &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+&lt;/template&gt;
 
-&lt;script setup>
-const msg = 'Hello Vue' 
-&lt;/script>
+&lt;script setup&gt;
+  const msg = 'Hello Vue'
+&lt;/script&gt;
 &#96;&#96;&#96;
 :::
 ```
@@ -54,11 +54,11 @@ const msg = 'Hello Vue'
 在 readme/index.md 文件中引用 child.vue
 
 ```
-::: codeBox
-&#96;&#96;&#96;vue
-#[vue](./child.vue)  
-&#96;&#96;&#96;
-:::
+ ::: codeBox
+ &#96;&#96;&#96;vue
+ #[vue](./child.vue)  
+ &#96;&#96;&#96;
+ :::
 ```
 
 目录的配制，如下：
