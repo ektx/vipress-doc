@@ -90,10 +90,6 @@ export default {
     controlToc(val){
       this.tocShow = val
     },
-     openBox(){
-      document.getElementById('toc-box').style.display = 'block'
-      document.getElementById('open-box').style.display = 'none'
-    },
   }
 }
 </script>
