@@ -12,7 +12,7 @@ export const menu = [
     children: [
       {
         label: '简介',
-        to: '/'
+        to: '/readme'
       },
       {
         label: '开始',

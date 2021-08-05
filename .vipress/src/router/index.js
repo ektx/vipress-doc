@@ -1,16 +1,20 @@
 // ‼️ 注意 此文件自动创建，请务手动修改内容
-// 创建时间: Mon Aug 02 2021 17:42:01 GMT+0800 (中国标准时间)
+// 创建时间: Wed Aug 04 2021 15:45:53 GMT+0800 (中国标准时间)
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from "../../md-pages/readme/index.vue";
+import WelcomeYou from "../views/welcome/index.vue";
 
 export default createRouter({
   history: createWebHistory(),
   routes: [
     {
-      name: "_home_",
       path: "/",
-      component: Home,
+      redirect: "/readme",
+    },
+    {
+      path: "/welcome-you",
+      name: "auto-welcome",
+      component: WelcomeYou,
     },
     {
       path: "/docs/build",
