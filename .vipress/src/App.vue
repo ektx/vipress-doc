@@ -1,16 +1,22 @@
 <template>
-  <Banner :title="title" />
+  <Banner :title="title" 
+  :control-aside="controlAside" 
+  :control-detail="controlDetail" 
+  :aside-wide="asideWide"
+  :toc-show="tocShow"
+  @control-toc ="controlToc" 
+  @control-side="controlSide" @click.stop />
   <section class="content">
     <aside v-if="menu.length">
       <Navs :value="menu" />
     </aside>
-    <main>
+    <main id="main" class="main"  v-bind:style="{ paddingLeft: mainPL + 'px'}">
       <router-view v-slot="{ Component }">
         <transition name="fade-slide-y" mode="out-in">
           <component :is="Component" />
         </transition>
       </router-view>
-      <div class="toc-box">
+      <div class="toc-box" id="toc-box" :style="{display: tocShow}" @click.stop>
         <TOC :list="TOCData" :offsetTop="100"/>
       </div>
     </main>
@@ -31,8 +37,63 @@ export default {
     return {
       menu,
       title: config.title,
-      TOCData
+      TOCData,
+      screenwidth: window.innerWidth,
+      // 侧边栏宽
+      asideWide: 300,
+      // 主体padding
+      mainPL: 320,
+      // 侧栏展示控制按钮
+      controlAside: '',
+      // 目录展示控制按钮
+      controlDetail: '',
+      // 目录展示状态
+      tocShow: ''
     }
+  },
+  mounted(){
+    window.addEventListener('resize',this.changeShow);
+    this.changeShow();
+    // 监听点击空白区域收回侧边栏
+    document.addEventListener('click',(e) => {
+      if(this.screenWidth < 900) {
+        this.asideWide = 0
+        this.tocShow = 'none'
+      }else if(this.screenWidth < 1200) {
+        this.asideWide = 0
+      }
+    })
+  },
+  methods:{
+    changeShow(){
+      this.screenWidth = window.innerWidth
+      if(this.screenWidth > 1200) {
+        this.asideWide = 300
+        this.controlAside = 'none'
+        this.mainPL = 320
+      }else{
+        this.asideWide = 0
+        this.controlAside = 'block'
+        this.mainPL = 30
+      }
+      if(this.screenWidth > 900) {
+        this.tocShow = 'block'
+        this.controlDetail = 'none'
+      }else{
+        this.tocShow = 'none'
+        this.controlDetail = 'block'
+      }
+    },
+    controlSide(val){
+      this.asideWide = val
+    },
+    controlToc(val){
+      this.tocShow = val
+    },
+     openBox(){
+      document.getElementById('toc-box').style.display = 'block'
+      document.getElementById('open-box').style.display = 'none'
+    },
   }
 }
 </script>
@@ -46,12 +107,11 @@ export default {
     z-index: 1;
     padding: 60px 0 0;
     bottom: 0;
-    width: 300px;
+    // width: 300px;
     overflow: auto;
     box-sizing: border-box;
     content-visibility: auto;
   }
-
   & > main {
     display: flex;
     padding: 60px 20px 20px 320px;
@@ -65,7 +125,6 @@ export default {
       padding: 0 0 0 20px;
     }
   }
-
   & > aside {
     &::-webkit-scrollbar {
       width: 3px;

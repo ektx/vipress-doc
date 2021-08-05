@@ -1,21 +1,55 @@
 <template>
   <header>
+    <span id="control-aside" @click="controlSide()" v-bind:style="{ display: controlAside}">&#9776;</span>
     <h1>{{ title }}</h1>
     <div class="toggle-theme-box">
       <i @click="toggleThemeEvt"></i>
     </div>
+    <span id="control-toc" @click="controlToc()" v-bind:style="{ display: controlDetail}" >&#9776;</span>
   </header>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { useContext, onMounted, defineEmit} from 'vue'
 
+const emit = defineEmit(['control-side','control-toc'])
 const props = defineProps({
   title: {
     type: String,
     default: 'ViPress'
   },
+  controlAside: {
+    type: String,
+    default: 'none'
+  },
+  controlDetail: {
+    type: String,
+    default: 'none'
+  },
+  asideWide:{
+    type: Number,
+    default: 0
+  },
+  tocShow:{
+    type: String,
+    default: 'none'
+  }
 })
+
+const controlSide = () => {
+  let width = 300
+  if(props.asideWide === 300){
+    width = 0
+  }else{
+    width = 300
+  }
+  emit('control-side', width)
+}
+
+const controlToc = () =>{
+  let show = props.tocShow === 'block'? 'none':'block'
+  emit('control-toc', show)
+}
 
 function toggleThemeEvt () {
   let html = document.documentElement.classList
@@ -23,7 +57,6 @@ function toggleThemeEvt () {
 
   localStorage.setItem('prefersColorScheme', html.contains('dark'))
 }
-
 function setTheme(type) {
   type = typeof type === 'boolean' ? type : type === 'true'
 
@@ -46,6 +79,7 @@ onMounted(() => {
 
   setTheme(theme ? theme : darkModeMediaQuery.matches)
 })
+
 </script>
 
 <style lang="less" scoped>
@@ -63,7 +97,25 @@ header {
   backdrop-filter: blur(5px);
   box-sizing: border-box;
   transition: background-color .4s ease-in-out;
-
+ 
+  #control-aside{
+    z-index: 2;
+    color: var(--page-txt-color);
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-right: 20px;
+    display: none;
+  }
+  #control-toc{
+    z-index: 2;
+    color: var(--page-txt-color);
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-left: 20px;
+    display: none;
+  }
   h1 {
     flex: 1;
     color: var(--page-txt-color);
