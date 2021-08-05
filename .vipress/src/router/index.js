@@ -3,7 +3,10 @@ import { routes } from "./routes"
 
 const scrollBehavior = function (to, from, savedPosition) {
   if (to.hash) {
-    return { el: to.hash }
+    return { 
+      el: `#${encodeURIComponent(to.hash.slice(1))}`,
+      top: 80
+    }
   }
   if (savedPosition) {
     return savedPosition;

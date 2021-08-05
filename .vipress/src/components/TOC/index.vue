@@ -43,7 +43,7 @@ export default {
     toggleActive() {
       if (this.timer) clearTimeout(this.timer)
 
-      this.timer = setTimeout(() => {
+      this.timer = setTimeout(async () => {
         let activeItem = []
 
         this.headers = []
@@ -63,7 +63,18 @@ export default {
         this.activeItem = []
         
         if (activeItem.length) {
-          activeItem.reverse()[0].active = true
+          const current = activeItem.reverse()[0]
+          current.active = true
+          const { scrollBehavior } = this.$router.options
+          
+          this.$router.options.scrollBehavior = undefined
+
+          await this.$router
+            .replace({
+              hash: '#' + decodeURIComponent(current.id),
+              force: true
+            })
+            .finally(() => (this.$router.options.scrollBehavior = scrollBehavior))
         }
       }, 100);
     }
