@@ -7,7 +7,7 @@
   @control-toc ="controlToc" 
   @control-side="controlSide" @click.stop />
   <section class="content">
-    <aside v-if="menu.length" v-bind:style="{ width: asideWide + 'px'}">
+    <aside v-if="menu.length" v-bind:style="{ width: asideWide + 'px'}" @click.stop>
       <Navs :value="menu" />
     </aside>
     <main id="main" class="main"  v-bind:style="{ paddingLeft: mainPL + 'px'}">
@@ -107,6 +107,7 @@ export default {
     overflow: auto;
     box-sizing: border-box;
     content-visibility: auto;
+    background-color: var(--page-bg-color);
   }
   & > main {
     display: flex;
