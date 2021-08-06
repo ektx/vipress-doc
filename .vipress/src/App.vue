@@ -7,7 +7,7 @@
   @control-toc ="controlToc" 
   @control-side="controlSide" @click.stop />
   <section class="content">
-    <aside v-if="menu.length">
+    <aside v-if="menu.length" v-bind:style="{ width: asideWide + 'px'}">
       <Navs :value="menu" />
     </aside>
     <main id="main" class="main"  v-bind:style="{ paddingLeft: mainPL + 'px'}">
