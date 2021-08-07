@@ -3,7 +3,7 @@
     <span id="control-aside" @click="controlSide()" v-bind:style="{ display: controlAside}">&#9776;</span>
     <h1>{{ title }}</h1>
     <div class="toggle-theme-box">
-      <i @click="toggleThemeEvt"></i>
+      <i @click="toggleThemeEvt" title="切换页面主题"></i>
     </div>
     <span id="control-toc" @click="controlToc()" v-bind:style="{ display: controlDetail}" >&#9776;</span>
   </header>
