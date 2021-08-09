@@ -1,22 +1,16 @@
 <template>
-  <Banner :title="title" 
-  :control-aside="controlAside" 
-  :control-detail="controlDetail" 
-  :aside-wide="asideWide"
-  :toc-show="tocShow"
-  @control-toc ="controlToc" 
-  @control-side="controlSide" @click.stop />
+  <Banner :title="title" :show-aside="showAside" :show-toc="showToc" @control-toc ="controlToc" @control-side="controlSide"  @click.stop/>
   <section class="content">
-    <aside v-if="menu.length" v-bind:style="{ width: asideWide + 'px'}" @click.stop>
+    <aside v-if="menu.length" :class="{aopen: showAside}" @click.stop>
       <Navs :value="menu" />
     </aside>
-    <main id="main" class="main"  v-bind:style="{ paddingLeft: mainPL + 'px'}">
+    <main id="main">
       <router-view v-slot="{ Component }">
         <transition name="fade-slide-y" mode="out-in">
           <component :is="Component" />
         </transition>
       </router-view>
-      <div class="toc-box" id="toc-box" :style="{display: tocShow}" @click.stop>
+      <div class="toc-box" id="toc-box" :class="{topen: showToc}" @click.stop>
         <TOC :list="TOCData" :offsetTop="100"/>
       </div>
     </main>
@@ -38,57 +32,27 @@ export default {
       menu,
       title: config.title,
       TOCData,
-      screenwidth: window.innerWidth,
-      // 侧边栏宽
-      asideWide: 300,
-      // 主体padding
-      mainPL: 320,
-      // 侧栏展示控制按钮
-      controlAside: '',
-      // 目录展示控制按钮
-      controlDetail: '',
-      // 目录展示状态
-      tocShow: ''
+      // 动态展示左侧栏
+      showAside: false,
+      // 动态展示toc-box侧栏
+      showToc: false,
     }
   },
   mounted(){
-    window.addEventListener('resize',this.changeShow);
-    this.changeShow();
     // 监听点击空白区域收回侧边栏
     document.addEventListener('click',(e) => {
-      if(this.screenWidth < 900) {
-        this.asideWide = 0
-        this.tocShow = 'none'
-      }else if(this.screenWidth < 1200) {
-        this.asideWide = 0
-      }
+      console.log('click1')
+      this.showAside = false
+      this.showToc = false
     })
   },
   methods:{
-    changeShow(){
-      this.screenWidth = window.innerWidth
-      if(this.screenWidth > 1200) {
-        this.asideWide = 300
-        this.controlAside = 'none'
-        this.mainPL = 320
-      }else{
-        this.asideWide = 0
-        this.controlAside = 'block'
-        this.mainPL = 30
-      }
-      if(this.screenWidth > 900) {
-        this.tocShow = 'block'
-        this.controlDetail = 'none'
-      }else{
-        this.tocShow = 'none'
-        this.controlDetail = 'block'
-      }
-    },
     controlSide(val){
-      this.asideWide = val
+      console.log(val)
+      this.showAside = val
     },
     controlToc(val){
-      this.tocShow = val
+      this.showToc = val
     },
   }
 }
@@ -103,11 +67,13 @@ export default {
     z-index: 1;
     padding: 60px 0 0;
     bottom: 0;
-    // width: 300px;
+    min-width: 300px;
     overflow: auto;
     box-sizing: border-box;
     content-visibility: auto;
     background-color: var(--page-bg-color);
+    transform: translateX(0);
+    transition: transform 0.3s ease;
   }
   & > main {
     display: flex;
@@ -117,9 +83,16 @@ export default {
     &:only-child {
       padding: 60px 30px 20px;
     }
-
+    
     .toc-box {
       padding: 0 0 0 20px;
+      background-color: var(--page-bg-color);
+      width: 200px;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      .top-of-centent{
+        display: block;
+      }
     }
   }
   & > aside {
@@ -139,6 +112,48 @@ export default {
   .fade-slide-y-leave-to {
     transform: translateY(10px);
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+     & > main {
+       padding-left: 30px;
+     }
+     & > aside {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+ .content {
+   & > main {
+    .toc-box {
+      width: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      .top-of-centent{
+        display: none;
+      }
+    }
+  }
+ }
+}
+
+.content > .aopen {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  background-color: var(--header-bg-color);
+}
+
+.content > main > .topen {
+  width: 200px;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  .top-of-centent{
+    display: block;
   }
 }
 </style>

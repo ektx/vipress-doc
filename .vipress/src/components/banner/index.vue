@@ -1,11 +1,39 @@
 <template>
   <header>
-    <span id="control-aside" @click="controlSide()" v-bind:style="{ display: controlAside}">&#9776;</span>
+    <div id="control-aside" @click="controlSide()">
+      <svg
+      class="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      viewBox="0 0 448 512"
+      >
+      <path
+        fill="currentColor"
+        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+        class
+      />
+    </svg>
+    </div>
     <h1>{{ title }}</h1>
     <div class="toggle-theme-box">
       <i @click="toggleThemeEvt"></i>
     </div>
-    <span id="control-toc" @click="controlToc()" v-bind:style="{ display: controlDetail}" >&#9776;</span>
+    <div id="control-toc" @click="controlToc()" >
+      <svg
+      class="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      viewBox="0 0 448 512"
+      >
+      <path
+        fill="currentColor"
+        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+        class
+      />
+      </svg>
+    </div>
   </header>
 </template>
 
@@ -18,37 +46,24 @@ const props = defineProps({
     type: String,
     default: 'ViPress'
   },
-  controlAside: {
-    type: String,
-    default: 'none'
+  showAside:{
+    type: Boolean,
+    default: 'false'
   },
-  controlDetail: {
-    type: String,
-    default: 'none'
-  },
-  asideWide:{
-    type: Number,
-    default: 0
-  },
-  tocShow:{
-    type: String,
-    default: 'none'
+  showToc:{
+    type: Boolean,
+    default: 'false'
   }
 })
 
 const controlSide = () => {
-  let width = 300
-  if(props.asideWide === 300){
-    width = 0
-  }else{
-    width = 300
-  }
-  emit('control-side', width)
+  console.log(props.showAside)
+  emit('control-side', !props.showAside)
 }
 
 const controlToc = () =>{
   let show = props.tocShow === 'block'? 'none':'block'
-  emit('control-toc', show)
+  emit('control-toc', !props.showToc)
 }
 
 function toggleThemeEvt () {
@@ -116,6 +131,13 @@ header {
     margin-left: 20px;
     display: none;
   }
+  
+  .icon {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+  }
+
   h1 {
     flex: 1;
     color: var(--page-txt-color);
@@ -131,6 +153,21 @@ header {
       background-color: var(--page-txt-color);
       transition: background-color .4s ease-in-out;
     }
+  }
+}
+@media screen and (max-width: 1200px) {
+  header {
+     #control-aside{
+       display: block;
+     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+ header {
+     #control-toc{
+       display: block;
+     }
   }
 }
 </style>
