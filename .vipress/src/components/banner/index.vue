@@ -17,7 +17,7 @@
     </div>
     <h1>{{ title }}</h1>
     <div class="toggle-theme-box">
-      <i @click="toggleThemeEvt"></i>
+      <i @click="toggleThemeEvt" title="切换页面主题"></i>
     </div>
     <div id="control-toc" @click="controlToc()" >
       <svg

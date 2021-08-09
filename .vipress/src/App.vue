@@ -100,17 +100,17 @@ export default {
       width: 3px;
     }
   }
+  
+  .fade-slide-y-leave-active,
   .fade-slide-y-enter-active {
-    transition: all 0.3s ease;
-  }
-
-  .fade-slide-y-leave-active {
-    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: 
+      opacity .35s ease-in-out,
+      transform .35s ease-in-out;
   }
 
   .fade-slide-y-enter-from,
   .fade-slide-y-leave-to {
-    transform: translateY(10px);
+    transform: translateY(20px);
     opacity: 0;
   }
 }
