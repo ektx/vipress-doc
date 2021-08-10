@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
-import { routes } from 'vipress-virtual-router'
+import { routes } from "vipress-virtual-router"
 
 const scrollBehavior = function (to, from, savedPosition) {
   if (to.hash) {

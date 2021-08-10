@@ -66,7 +66,7 @@ export default {
           const current = activeItem.reverse()[0]
           current.active = true
           const { scrollBehavior } = this.$router.options
-          
+
           this.$router.options.scrollBehavior = undefined
 
           await this.$router
@@ -74,9 +74,11 @@ export default {
               hash: '#' + decodeURIComponent(current.id),
               force: true
             })
-            .finally(() => (this.$router.options.scrollBehavior = scrollBehavior))
+            .finally(
+              () => (this.$router.options.scrollBehavior = scrollBehavior)
+            )
         }
-      }, 100);
+      }, 100)
     }
   },
   unmounted() {
