@@ -41,14 +41,12 @@ export default {
   mounted(){
     // 监听点击空白区域收回侧边栏
     document.addEventListener('click',(e) => {
-      console.log('click1')
       this.showAside = false
       this.showToc = false
     })
   },
   methods:{
     controlSide(val){
-      console.log(val)
       this.showAside = val
     },
     controlToc(val){
@@ -67,8 +65,8 @@ export default {
     z-index: 1;
     padding: 60px 0 0;
     bottom: 0;
-    min-width: 300px;
-    overflow: auto;
+    width: 300px;
+    overflow-y: auto;
     box-sizing: border-box;
     content-visibility: auto;
     background-color: var(--page-bg-color);
@@ -95,11 +93,12 @@ export default {
       }
     }
   }
-  & > aside {
-    &::-webkit-scrollbar {
-      width: 3px;
-    }
-  }
+
+  // & > aside {
+  //   &::-webkit-scrollbar {
+  //     width: 3px;
+  //   }
+  // }
   
   .fade-slide-y-leave-active,
   .fade-slide-y-enter-active {
@@ -118,7 +117,7 @@ export default {
 @media screen and (max-width: 1200px) {
   .content {
      & > main {
-       padding-left: 30px;
+      padding-left: 30px;
      }
      & > aside {
       transform: translateX(-100%);
@@ -129,17 +128,18 @@ export default {
 
 @media screen and (max-width: 900px) {
  .content {
-   & > main {
-    .toc-box {
-      width: 0;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      .top-of-centent{
-        display: none;
+    & > main {
+      padding-right: 10px;
+      .toc-box {
+        width: 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        .top-of-centent{
+          display: none;
+        }
       }
     }
   }
- }
 }
 
 .content > .aopen {

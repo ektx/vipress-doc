@@ -56,15 +56,9 @@ const props = defineProps({
   }
 })
 
-const controlSide = () => {
-  console.log(props.showAside)
-  emit('control-side', !props.showAside)
-}
+const controlSide = () => emit('control-side', !props.showAside)
 
-const controlToc = () =>{
-  let show = props.tocShow === 'block'? 'none':'block'
-  emit('control-toc', !props.showToc)
-}
+const controlToc = () => emit('control-toc', !props.showToc)
 
 function toggleThemeEvt () {
   let html = document.documentElement.classList
