@@ -33,21 +33,21 @@ vipress 支持文件的一级引用。
 parent.md
 
 ```
-# parent
+ # parent
 
-#[md](./child.md) 
+ #[md](./child.md) 
 ```
 
 child.md
 
 ```
-# child
+ # child
 ```
 
 合并为:
 
 ```
-# parent
+ # parent
 
-# child
+ # child
 ```

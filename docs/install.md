@@ -11,13 +11,13 @@
 
 ```sh
 # npm 6.x
-npm init @vipress/app@latest my-app -t vue3
+npm init vipress@latest my-app -t vue3
 
 # npm 7+, 需要额外的双横线：
-npm init @vipress/app@latest my-app -- --t vue3
+npm init vipress@latest my-app -- --t vue3
 
 # yarn
-yarn create @vipress/app@latest my-app --t vue3
+yarn create vipress@latest my-app --t vue3
 ```
 
 支持的模板有：
@@ -34,6 +34,18 @@ npm run dev
 
 # 打包服务
 npm run build
+```
+
+## 更新模板
+
+用于快速更新 **.vipress/src** 目录。
+
+```sh
+# npm 6.x
+npm init vipress@latest -update
+
+# npm 7+
+npm init vipress@latest -- --update
 ```
 
 ## 测试打包
