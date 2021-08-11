@@ -1,64 +1,21 @@
 <template>
   <header>
-    <div id="control-aside" @click="controlSide()">
-      <svg
-      class="icon"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      viewBox="0 0 448 512"
-      >
-      <path
-        fill="currentColor"
-        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-        class
-      />
-    </svg>
-    </div>
     <h1>{{ title }}</h1>
     <div class="toggle-theme-box">
-      <i @click="toggleThemeEvt" title="切换页面主题"></i>
-    </div>
-    <div id="control-toc" @click="controlToc()" >
-      <svg
-      class="icon"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      viewBox="0 0 448 512"
-      >
-      <path
-        fill="currentColor"
-        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-        class
-      />
-      </svg>
+      <i @click="toggleThemeEvt"></i>
     </div>
   </header>
 </template>
 
 <script setup>
-import { useContext, onMounted, defineEmit} from 'vue'
+import { onMounted } from 'vue'
 
-const emit = defineEmit(['control-side','control-toc'])
 const props = defineProps({
   title: {
     type: String,
     default: 'ViPress'
   },
-  showAside:{
-    type: Boolean,
-    default: 'false'
-  },
-  showToc:{
-    type: Boolean,
-    default: 'false'
-  }
 })
-
-const controlSide = () => emit('control-side', !props.showAside)
-
-const controlToc = () => emit('control-toc', !props.showToc)
 
 function toggleThemeEvt () {
   let html = document.documentElement.classList
@@ -66,6 +23,7 @@ function toggleThemeEvt () {
 
   localStorage.setItem('prefersColorScheme', html.contains('dark'))
 }
+
 function setTheme(type) {
   type = typeof type === 'boolean' ? type : type === 'true'
 
@@ -88,7 +46,6 @@ onMounted(() => {
 
   setTheme(theme ? theme : darkModeMediaQuery.matches)
 })
-
 </script>
 
 <style lang="less" scoped>
@@ -106,31 +63,6 @@ header {
   backdrop-filter: blur(5px);
   box-sizing: border-box;
   transition: background-color .4s ease-in-out;
- 
-  #control-aside{
-    z-index: 2;
-    color: var(--page-txt-color);
-    font-size: 30px;
-    font-weight: bolder;
-    cursor: pointer;
-    margin-right: 20px;
-    display: none;
-  }
-  #control-toc{
-    z-index: 2;
-    color: var(--page-txt-color);
-    font-size: 30px;
-    font-weight: bolder;
-    cursor: pointer;
-    margin-left: 20px;
-    display: none;
-  }
-  
-  .icon {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-  }
 
   h1 {
     flex: 1;
@@ -147,21 +79,6 @@ header {
       background-color: var(--page-txt-color);
       transition: background-color .4s ease-in-out;
     }
-  }
-}
-@media screen and (max-width: 1200px) {
-  header {
-     #control-aside{
-       display: block;
-     }
-  }
-}
-
-@media screen and (max-width: 900px) {
- header {
-     #control-toc{
-       display: block;
-     }
   }
 }
 </style>
