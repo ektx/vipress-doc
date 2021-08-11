@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div id="control-aside" @click="controlSide()">
+    <div class="control-aside" @click="controlSide()">
       <svg
       class="icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -11,15 +11,16 @@
       <path
         fill="currentColor"
         d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-        class
       />
-    </svg>
+      </svg>
     </div>
+    <div class="right-show flex-grow"></div>
     <h1>{{ title }}</h1>
+    <div class="flex-grow"></div>
     <div class="toggle-theme-box">
       <i @click="toggleThemeEvt" title="切换页面主题"></i>
     </div>
-    <div id="control-toc" @click="controlToc()" >
+    <div class="control-toc" @click="controlToc()" >
       <svg
       class="icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +31,6 @@
       <path
         fill="currentColor"
         d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-        class
       />
       </svg>
     </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { useContext, onMounted, defineEmit} from 'vue'
+import { onMounted, defineEmit} from 'vue'
 
 const emit = defineEmit(['control-side','control-toc'])
 const props = defineProps({
@@ -107,34 +107,38 @@ header {
   box-sizing: border-box;
   transition: background-color .4s ease-in-out;
  
-  #control-aside{
-    z-index: 2;
+  .control-aside{
     color: var(--page-txt-color);
-    font-size: 30px;
-    font-weight: bolder;
     cursor: pointer;
-    margin-right: 20px;
+    padding: 20px;
     display: none;
   }
-  #control-toc{
-    z-index: 2;
+
+  .control-toc{
     color: var(--page-txt-color);
-    font-size: 30px;
-    font-weight: bolder;
     cursor: pointer;
-    margin-left: 20px;
+    padding: 20px;
     display: none;
   }
   
   .icon {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   h1 {
-    flex: 1;
+    // flex: 1;
     color: var(--page-txt-color);
+    font-size: 1.6rem;
+  }
+
+  .flex-grow{
+    flex-grow: 1;
+  }
+
+  .right-show{
+    display: none;
   }
 
   .toggle-theme-box {
@@ -149,19 +153,34 @@ header {
     }
   }
 }
+
 @media screen and (max-width: 1200px) {
   header {
-     #control-aside{
+      padding-left: 0;
+     .control-aside{
        display: block;
      }
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
  header {
-     #control-toc{
+      padding-right: 0;
+     .control-toc{
        display: block;
      }
+  }
+}
+
+@media screen and (max-width: 450px) {
+ header {
+    // 手机模式下打开右边的felx-grow，实现标题居中效果
+    .right-show{
+      display: block;
+    }
+    .control-toc{
+      display: block;
+    }
   }
 }
 </style>

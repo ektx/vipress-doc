@@ -4,13 +4,13 @@
     <aside v-if="menu.length" :class="{aopen: showAside}" @click.stop>
       <Navs :value="menu" />
     </aside>
-    <main id="main">
+    <main>
       <router-view v-slot="{ Component }">
         <transition name="fade-slide-y" mode="out-in">
           <component :is="Component" />
         </transition>
       </router-view>
-      <div class="toc-box" id="toc-box" :class="{topen: showToc}" @click.stop>
+      <div class="toc-box" :class="{topen: showToc}" @click.stop>
         <TOC :list="TOCData" :offsetTop="100"/>
       </div>
     </main>
@@ -35,12 +35,12 @@ export default {
       // 动态展示左侧栏
       showAside: false,
       // 动态展示toc-box侧栏
-      showToc: false,
+      showToc: false
     }
   },
   mounted(){
     // 监听点击空白区域收回侧边栏
-    document.addEventListener('click',(e) => {
+    document.addEventListener('click',() => {
       this.showAside = false
       this.showToc = false
     })
@@ -62,9 +62,9 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
     z-index: 1;
     padding: 60px 0 0;
-    bottom: 0;
     width: 300px;
     overflow-y: auto;
     box-sizing: border-box;
@@ -83,13 +83,14 @@ export default {
     }
     
     .toc-box {
-      padding: 0 0 0 20px;
+      padding-left: 20px;
       background-color: var(--page-bg-color);
-      width: 200px;
-      transform: translateX(0);
-      transition: transform 0.3s ease;
+      width: 12rem;
+      transition: width 0.3s ease;
+
       .top-of-centent{
         display: block;
+        width: 12rem;
       }
     }
   }
@@ -114,26 +115,27 @@ export default {
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .content {
      & > main {
       padding-left: 30px;
      }
      & > aside {
+      width: 300px;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
      }
   }
 }
 
-@media screen and (max-width: 900px) {
+@media (max-width: 800px) {
  .content {
     & > main {
       padding-right: 10px;
       .toc-box {
         width: 0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        transition: width 0.3s ease;
+
         .top-of-centent{
           display: none;
         }
@@ -142,16 +144,25 @@ export default {
   }
 }
 
+@media (max-width: 450px) {
+ .content {
+    & > aside {
+      width: 100%;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+     }
+  }
+}
+
 .content > .aopen {
   transform: translateX(0);
-  transition: transform 0.3s ease;
-  background-color: var(--header-bg-color);
+  transition: width transform 0.3s ease;
 }
 
 .content > main > .topen {
-  width: 200px;
-  transform: translateX(0);
-  transition: transform 0.3s ease;
+  width: 12rem;
+  transition: width 0.3s ease;
+
   .top-of-centent{
     display: block;
   }
