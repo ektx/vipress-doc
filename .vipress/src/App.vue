@@ -93,12 +93,6 @@ export default {
       }
     }
   }
-
-  // & > aside {
-  //   &::-webkit-scrollbar {
-  //     width: 3px;
-  //   }
-  // }
   
   .fade-slide-y-leave-active,
   .fade-slide-y-enter-active {
