@@ -2,45 +2,36 @@
   <header>
     <div class="control-aside" @click="controlSide()">
       <svg
-      class="icon"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      viewBox="0 0 448 512"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
       >
       <path
-        fill="currentColor"
         d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
       />
       </svg>
     </div>
-    <div class="right-show flex-grow"></div>
     <h1>{{ title }}</h1>
-    <div class="flex-grow"></div>
     <div class="toggle-theme-box">
       <i @click="toggleThemeEvt" title="切换页面主题"></i>
     </div>
     <div class="control-toc" @click="controlToc()" >
       <svg
-      class="icon"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      role="img"
-      viewBox="0 0 448 512"
+        viewBox="0 0 1024 1024" 
+        xmlns="http://www.w3.org/2000/svg" 
       >
-      <path
-        fill="currentColor"
-        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-      />
+        <path d="M170.666667 512m-42.666667 0a42.666667 42.666667 0 1 0 85.333333 0 42.666667 42.666667 0 1 0-85.333333 0Z"></path>
+        <path d="M298.666667 469.333333m40.106666 0l517.12 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106667l-517.12 0q-40.106667 0-40.106666-40.106667l0-5.12q0-40.106667 40.106666-40.106667Z"></path>
+        <path d="M128 682.666667m40.106667 0l687.786666 0q40.106667 0 40.106667 40.106666l0 5.12q0 40.106667-40.106667 40.106667l-687.786666 0q-40.106667 0-40.106667-40.106667l0-5.12q0-40.106667 40.106667-40.106666Z"></path>
+        <path d="M128 256m40.106667 0l687.786666 0q40.106667 0 40.106667 40.106667l0 5.12q0 40.106667-40.106667 40.106666l-687.786666 0q-40.106667 0-40.106667-40.106666l0-5.12q0-40.106667 40.106667-40.106667Z"></path>
       </svg>
     </div>
   </header>
 </template>
 
 <script setup>
-import { onMounted, defineEmit} from 'vue'
+import { onMounted } from 'vue'
 
-const emit = defineEmit(['control-side','control-toc'])
+const emit = defineEmits(['control-side','control-toc'])
 const props = defineProps({
   title: {
     type: String,
@@ -106,46 +97,40 @@ header {
   backdrop-filter: blur(5px);
   box-sizing: border-box;
   transition: background-color .4s ease-in-out;
- 
-  .control-aside{
-    color: var(--page-txt-color);
+  
+  svg {
+    width: 18px;
+    height: 18px;
+    padding: 10px;
     cursor: pointer;
-    padding: 20px;
-    display: none;
-  }
 
-  .control-toc{
-    color: var(--page-txt-color);
-    cursor: pointer;
-    padding: 20px;
+    path {
+      fill: var(--page-txt-color);
+    }
+  }
+ 
+  .control-aside,
+  .control-toc {
     display: none;
   }
   
-  .icon {
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
   h1 {
-    // flex: 1;
+    flex: 1;
+    max-width: 70%;
     color: var(--page-txt-color);
     font-size: 1.6rem;
-  }
-
-  .flex-grow{
-    flex-grow: 1;
-  }
-
-  .right-show{
-    display: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .toggle-theme-box {
+    padding: 10px;
+
     i {
       display: block;
-      width: 16px;
-      height: 16px;
+      width: 12px;
+      height: 12px;
       border-radius: 100%;
       cursor: pointer;
       background-color: var(--page-txt-color);
@@ -156,28 +141,31 @@ header {
 
 @media screen and (max-width: 1200px) {
   header {
-      padding-left: 0;
-     .control-aside{
-       display: block;
-     }
+    padding-left: 0;
+
+    .control-aside{
+      display: block;
+    }
   }
 }
 
 @media screen and (max-width: 800px) {
  header {
-      padding-right: 0;
-     .control-toc{
-       display: block;
-     }
+    padding-right: 0;
+    
+    .control-toc{
+      display: block;
+    }
   }
 }
 
 @media screen and (max-width: 450px) {
  header {
-    // 手机模式下打开右边的felx-grow，实现标题居中效果
-    .right-show{
-      display: block;
+    h1 {
+      text-align: center;
+      text-indent: 32px;
     }
+    
     .control-toc{
       display: block;
     }
