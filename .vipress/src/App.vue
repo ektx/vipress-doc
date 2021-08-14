@@ -1,7 +1,16 @@
 <template>
-  <Banner :title="title" :show-aside="showAside" :show-toc="showToc" @control-toc ="controlToc" @control-side="controlSide"  @click.stop/>
+  <Banner 
+    :title="title" 
+    v-model:showAside="showAside" 
+    v-model:showToc="showToc" 
+    @click.stop
+  />
   <section class="content">
-    <aside v-if="menu.length" :class="{aopen: showAside}" @click.stop>
+    <aside 
+      v-if="menu.length" 
+      :class="{ open: showAside }" 
+      @click.stop
+    >
       <Navs :value="menu" />
     </aside>
     <main>
@@ -10,7 +19,11 @@
           <component :is="Component" />
         </transition>
       </router-view>
-      <div class="toc-box" :class="{topen: showToc}" @click.stop>
+      <div 
+        class="toc-box" 
+        :class="{ open: showToc }"
+        @click.stop
+      >
         <TOC :list="TOCData" :offsetTop="100"/>
       </div>
     </main>
@@ -40,18 +53,10 @@ export default {
   },
   mounted(){
     // 监听点击空白区域收回侧边栏
-    document.addEventListener('click',() => {
+    window.addEventListener('click', () => {
       this.showAside = false
       this.showToc = false
     })
-  },
-  methods:{
-    controlSide(val){
-      this.showAside = val
-    },
-    controlToc(val){
-      this.showToc = val
-    },
   }
 }
 </script>
@@ -65,26 +70,29 @@ export default {
     bottom: 0;
     z-index: 1;
     padding: 60px 0 0;
-    width: 300px;
+    width: 280px;
     overflow-y: auto;
     box-sizing: border-box;
     content-visibility: auto;
-    background-color: var(--page-bg-color);
-    transform: translateX(0);
-    transition: transform 0.3s ease;
+    transform: translateX(0%);
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
   }
   & > main {
+    position: relative;
     display: flex;
-    padding: 60px 20px 20px 320px;
+    padding: 60px 0 0 280px;
     box-sizing: border-box;
+
+    article {
+      padding: 0 20px 0;
+    }
 
     &:only-child {
       padding: 60px 30px 20px;
     }
     
     .toc-box {
-      padding-left: 20px;
-      background-color: var(--page-bg-color);
       width: 12rem;
       transition: width 0.3s ease;
 
@@ -94,12 +102,6 @@ export default {
       }
     }
   }
-
-  // & > aside {
-  //   &::-webkit-scrollbar {
-  //     width: 3px;
-  //   }
-  // }
   
   .fade-slide-y-leave-active,
   .fade-slide-y-enter-active {
@@ -117,27 +119,45 @@ export default {
 
 @media (max-width: 1200px) {
   .content {
-     & > main {
-      padding-left: 30px;
-     }
-     & > aside {
-      width: 300px;
+    & > main {
+      padding-left: 0;
+
+    }
+    & > aside {
+      background-color: var(--header-bg-color);
+      backdrop-filter: blur(5px);
       transform: translateX(-100%);
-      transition: transform 0.3s ease;
-     }
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
   }
 }
 
 @media (max-width: 800px) {
  .content {
     & > main {
-      padding-right: 10px;
       .toc-box {
-        width: 0;
-        transition: width 0.3s ease;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        bottom: 0;
+        width: 200px;
+        padding: 0 10px;
+        background-color: var(--header-bg-color);
+        backdrop-filter: blur(5px);
+        transform: translateX(100%);
+        transition: transform .3s ease-in-out;
+        will-change: transform;
+        overflow: auto;
 
-        .top-of-centent{
-          display: none;
+        .top-of-centent {
+          position: static;
+        }
+
+        &.open {
+          transform: translateX(0);
         }
       }
     }
@@ -147,24 +167,14 @@ export default {
 @media (max-width: 450px) {
  .content {
     & > aside {
-      width: 100%;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-     }
-  }
-}
+      width: 70vw;
+    }
 
-.content > .aopen {
-  transform: translateX(0);
-  transition: width transform 0.3s ease;
-}
-
-.content > main > .topen {
-  width: 12rem;
-  transition: width 0.3s ease;
-
-  .top-of-centent{
-    display: block;
+    main {
+      .toc-box {
+        width: 70vw;
+      }
+    }
   }
 }
 </style>

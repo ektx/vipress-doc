@@ -1,6 +1,9 @@
 <template>
   <header>
-    <div class="control-aside" @click="controlSide()">
+    <div 
+      class="control-aside" 
+      @click="$emit('update:showAside', !showAside)"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
@@ -11,10 +14,13 @@
       </svg>
     </div>
     <h1>{{ title }}</h1>
-    <div class="toggle-theme-box">
-      <i @click="toggleThemeEvt" title="切换页面主题"></i>
+    <div class="toggle-theme-box" @click="toggleThemeEvt">
+      <i title="切换页面主题"></i>
     </div>
-    <div class="control-toc" @click="controlToc()" >
+    <div 
+      class="control-toc" 
+      @click="$emit('update:showToc', !showToc)" 
+    >
       <svg
         viewBox="0 0 1024 1024" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -31,25 +37,24 @@
 <script setup>
 import { onMounted } from 'vue'
 
-const emit = defineEmits(['control-side','control-toc'])
-const props = defineProps({
+defineEmits([
+  'update:showAside',
+  'update:showToc'
+])
+defineProps({
   title: {
     type: String,
     default: 'ViPress'
   },
   showAside:{
     type: Boolean,
-    default: 'false'
+    default: false
   },
   showToc:{
     type: Boolean,
-    default: 'false'
+    default: false
   }
 })
-
-const controlSide = () => emit('control-side', !props.showAside)
-
-const controlToc = () => emit('control-toc', !props.showToc)
 
 function toggleThemeEvt () {
   let html = document.documentElement.classList
@@ -79,7 +84,6 @@ onMounted(() => {
 
   setTheme(theme ? theme : darkModeMediaQuery.matches)
 })
-
 </script>
 
 <style lang="less" scoped>
@@ -92,11 +96,11 @@ header {
   display: flex;
   align-items: center;
   height: 60px;
-  padding: 0 30px;
   background-color: var(--header-bg-color);
   backdrop-filter: blur(5px);
   box-sizing: border-box;
-  transition: background-color .4s ease-in-out;
+  transition: background-color .3s ease-in-out;
+  will-change: bacground-color;
   
   svg {
     width: 18px;
@@ -116,7 +120,6 @@ header {
   
   h1 {
     flex: 1;
-    max-width: 70%;
     color: var(--page-txt-color);
     font-size: 1.6rem;
     text-overflow: ellipsis;
@@ -134,41 +137,34 @@ header {
       border-radius: 100%;
       cursor: pointer;
       background-color: var(--page-txt-color);
-      transition: background-color .4s ease-in-out;
+      transition: background-color .3s ease-in-out;
     }
   }
 }
 
 @media screen and (max-width: 1200px) {
   header {
-    padding-left: 0;
-
-    .control-aside{
+    .control-aside {
       display: block;
     }
   }
 }
 
 @media screen and (max-width: 800px) {
- header {
-    padding-right: 0;
-    
-    .control-toc{
+  header {
+    .control-toc {
       display: block;
     }
   }
 }
 
 @media screen and (max-width: 450px) {
- header {
+  header {
     h1 {
       text-align: center;
       text-indent: 32px;
     }
-    
-    .control-toc{
-      display: block;
-    }
+
   }
 }
 </style>
