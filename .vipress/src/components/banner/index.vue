@@ -120,6 +120,7 @@ header {
   
   h1 {
     flex: 1;
+    margin-left: 10px;
     color: var(--page-txt-color);
     font-size: 1.6rem;
     text-overflow: ellipsis;
@@ -146,6 +147,10 @@ header {
   header {
     .control-aside {
       display: block;
+    }
+
+    h1 {
+      margin-left: 0;
     }
   }
 }
