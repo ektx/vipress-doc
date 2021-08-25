@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-const msg = 'Hello Vue' 
+const msg = 'Hello Vue'
 </script>
 ```
 :::
