@@ -48,6 +48,18 @@ npm init vipress@latest -update
 npm init vipress@latest -- --update
 ```
 
+## 验证文档
+
+用于保持页面的显示效果为最新的内容。
+
+```sh
+# npm 6.x
+npm dev -c
+
+# npm 7+
+npm dev -- -c
+```
+
 ## 测试打包
 
 将打包生成后的 **dist** 目录复制到你的静态服务器根目录下。
