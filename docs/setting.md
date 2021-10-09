@@ -34,23 +34,33 @@ package.json 示例：
 }
 ```
 
-## 客户端配制
+## 共享配置
 
 完整的配制效果如下：
 
 ```js
 ...
 module.exports = {
-  title: 'PROJECT_NAME',  // 标题
-  lang: 'zh-CN',          // 网页语言
-  icon: '/favicon.ico',   // icon
-  template: 'vue3',
-  homeRoute: '',          // 首页路由地址
-  build: {                // 打包设置
-    base: '/',            // 公共基础路径
-    outDir: 'dist'        // 指定输出目录，默认 dist
+  title: 'PROJECT_NAME',      // 标题
+  lang: 'zh-CN',              // 网页语言
+  icon: '/favicon.ico',       // icon
+  template: 'vue3',           // 渲染模板
+  homeRoute: '',              // 首页路由地址
+  server: {
+    port: 12345,              // 默认端口
+    strictPort: false,        // 支持端口占用时自动调整
   },
-  plugins: [ vuePlugin() ]          // 使用的模板信息
+  build: {                    // 打包设置
+    doc: {                    // 打包文档
+      base: '/',              // 
+      outDir: 'dist'          // 打包输出目录
+    },
+    lib: {                    // 打包组件
+      entry: 'packages',      // 组件目录
+      outDir: 'lib'           // 组件生成目录
+    }
+  },
+  plugins: [ vuePlugin() ]    // 使用的模板信息
 }
 ```
 
@@ -70,14 +80,14 @@ title: 'PROJECT_NAME',
 ### lang
 
 - 类型 `String`
-- default `zh-CN`
+- 默认 `zh-CN`
 
 网页的语言，通常你并不需要配制此项。
 
 ### icon
 
 - 类型 `Path`
-- default `/favicon.ico`
+- 默认 `/favicon.ico`
 
 指定网站的图标，你可以将它设置为一个网络地址或是 public 目录下的内容。
 
@@ -99,76 +109,110 @@ title: 'PROJECT_NAME',
 homeRoute: '/docs/setting'
 ```
 
-### build
+## 服务器配置
 
-- 类型 `Object`
+#### server.port
+
+- 类型 `Number`
+- 默认 `12345`
+
+  指定开发服务器端口。注意：如果端口已经被使用，服务会自动尝试下一个可用的端口，所以这可能不是开发服务器最终监听的实际端口。
+
+#### server.strictPort
+
+- 类型 `boolean`
+- 默认 `false`
+
+  设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
+
+
+## 打包设置
 
 打包设置。
 
-#### build.base
+### 文档打包设置
+
+#### build.doc.base
 
 - 类型 `String`
-- default `/`
+- 默认 `/`
 
-公共基础路径。12
+  开发或生产环境服务的公共基础路径。合法的值包括以下几种：
+  - 绝对 URL 路径名，例如 `/foo/`
+  - 完整的 URL，例如 `https://foo.com/`
+  - 空字符串或 `./`（用于开发环境）
 
-#### build.outDir
+#### build.doc.outDir
 
 - 类型 `String`
-- default `dist`
+- 默认 `dist`
 
-指定输出目录，默认 dist 目录。
+  指定输出目录，默认 dist 目录(相对于项目根目录)。  
+
+### 组件库打包设置
+
+#### build.lib.entry
+
+- 类型 `String`
+- 默认 `packages`
+
+指定打包的入口目录（相对于项目根目录）。
+
+#### build.lib.outDir
+
+- 类型 `String`
+- 默认 `lib`
+
+指定输出目录，默认 lib 目录(相对于项目根目录)。
 
 
 ### plugin
 
-- 类型 `Array`
+- 类型 `(Plugin | Plugin[])[]`
 
-插件使用，接受插件方法。
+插件使用，接受插件方法。具体可以参考 [vite 插件](https://vitejs.bootcss.com/guide/api-plugin.html)。
 
 
-### project
-
-- 类型 `Object`
+## 系统默认服务
 
 此项返回的是项目的基础信息。
 
-#### project.root
+### project.root
 
 - 类型 `String`
 - 只读
 
 返回当前项目根目录绝对位置。
 
-#### project.serverDir
+### project.serverDir
 
 - 类型 `String`
 - 只读
 
 返回当前项目中 **.vipress** 的绝对位置。
 
-#### project.mdPagesDir
+### project.mdPagesDir
 
 - 类型 `String`
 - 只读
 
 返回当前项目所有 markdown 解析后生成的 vue 文件的绝对位置。
 
-#### project.srcDir
+### project.srcDir
 
 - 类型 `String`
 - 只读
 
 返回当前项目 **.vipress/src** 目录的绝对位置。
 
-#### project.publicDir
+### project.publicDir
 
 - 类型 `String`
 - 只读
 
 返回当前项目的 **publuc** 目录绝对位置。
 
-#### project.configPath
+### project.configPath
 
 - 类型 `String`
 - 只读

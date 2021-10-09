@@ -1,4 +1,4 @@
-# 文档
+# Markdown
 
 vipress 是以 markdown 为文档的基础，通过扩展赋予更多的表现力。vipress 内部使用的 vite，所以服务启动之后，会生成类似于静态服务器的能力。
 
@@ -15,6 +15,8 @@ vipress 是以 markdown 为文档的基础，通过扩展赋予更多的表现�
 ![peppa pig](/peppaPig.jpg)
 
 ## 文件内嵌
+
+### Markdown 文件内嵌
 
 格式: `#[template](path)`
 
@@ -33,7 +35,7 @@ vipress 支持文件的一级引用。
 parent.md
 
 ```
- # parent
+ # parent file
 
  #[md](./child.md) 
 ```
@@ -41,7 +43,7 @@ parent.md
 child.md
 
 ```
- # child
+ # child file
 ```
 
 合并为:
@@ -49,5 +51,5 @@ child.md
 ```
  # parent
 
- # child
+ # child file
 ```

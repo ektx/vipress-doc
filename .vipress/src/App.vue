@@ -77,6 +77,17 @@ export default {
     transform: translateX(0%);
     transition: transform 0.3s ease-in-out;
     will-change: transform;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--scroll-thumb-color);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      margin: 62px 0 2px 0;
+    }
   }
   & > main {
     position: relative;
@@ -86,10 +97,6 @@ export default {
 
     article {
       padding: 0 20px 0;
-    }
-
-    &:only-child {
-      padding: 60px 30px 20px;
     }
     
     .toc-box {
@@ -117,12 +124,12 @@ export default {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .content {
     & > main {
       padding-left: 0;
-
     }
+
     & > aside {
       background-color: var(--header-bg-color);
       backdrop-filter: blur(5px);

@@ -6,8 +6,7 @@
 
 ## 安装
 
-
-用于协助项目文档生成。
+用于创建项目文档。
 
 ```sh
 # npm 6.x
@@ -22,7 +21,7 @@ yarn create vipress@latest my-app --t vue3
 
 支持的模板有：
 
-- vue3(不指定时，默认模板)
+- vue3 （默认模板）
 - vue2
 
 
@@ -38,7 +37,7 @@ npm run build
 
 ## 更新模板
 
-用于快速更新 **.vipress/src** 目录。
+用于快速更新 **.vipress/src** 目录中文件。
 
 ```sh
 # npm 6.x
@@ -47,6 +46,8 @@ npm init vipress@latest -update
 # npm 7+
 npm init vipress@latest -- --update
 ```
+
+> ⚠ 更新后，会覆盖之前的文件，需要手动调整。
 
 ## 验证文档
 
@@ -100,4 +101,4 @@ server {
 }
 ```
 
-复制完内容后，通过 [localhost:8000](http://localhost:8000/) 访问我们的打包文档就可以了。
+复制完内容后，通过 **localhost:8000** 访问我们的打包文档就可以了。

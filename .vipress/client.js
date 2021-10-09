@@ -28,7 +28,7 @@ export const menu = [
     label: '功能',
     children: [
       {
-        label: '文档',
+        label: 'Markdown',
         to: '/docs/doc'
       },
       {
