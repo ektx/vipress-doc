@@ -6,23 +6,25 @@
 
 ## 安装
 
-用于创建项目文档。
+- 创建新项目
 
-```sh
-# npm 6.x
-npm init vipress@latest my-app -t vue3
+  用于创建项目文档。
 
-# npm 7+, 需要额外的双横线：
-npm init vipress@latest my-app -- --t vue3
+  ```sh
+  # npm 6.x
+  npm init vipress@latest my-app -t vue3
 
-# yarn
-yarn create vipress@latest my-app --t vue3
-```
+  # npm 7+, 需要额外的双横线：
+  npm init vipress@latest my-app -- --t vue3
 
-支持的模板有：
+  # yarn
+  yarn create vipress@latest my-app --t vue3
+  ```
 
-- vue3 （默认模板）
-- vue2
+  支持的模板有：
+
+  - vue3 （默认模板）
+  - vue2
 
 
 ## 运行与打包
