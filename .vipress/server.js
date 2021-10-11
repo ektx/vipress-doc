@@ -8,6 +8,8 @@ module.exports = {
   template: 'vue3',
   // 首页路由地址
   homeRoute: '/readme',
-  plugins: [ vuePlugin() ]
+  plugins: [ vuePlugin({
+    include: /vue3?$/i
+  }) ]
 }
   
