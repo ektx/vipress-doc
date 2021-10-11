@@ -35,6 +35,12 @@
 <script setup>
 const msg = 'Hello Vue'
 </script>
+
+<style lang="less" scoped>
+h1 {
+  color: red;
+}
+</style>
 ```
 :::
 
