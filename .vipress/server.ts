@@ -1,6 +1,6 @@
-const vuePlugin = require('@vitejs/plugin-vue')
+import vuePlugin from '@vitejs/plugin-vue'
 
-module.exports = {
+export default {
   // 标题
   title: 'vipress-doc',
   lang: 'zh-CN',
@@ -8,8 +8,6 @@ module.exports = {
   template: 'vue3',
   // 首页路由地址
   homeRoute: '/readme',
-  plugins: [ vuePlugin({
-    include: /vue3?$/i
-  }) ]
+  plugins: [ vuePlugin() ]
 }
   
