@@ -1,12 +1,13 @@
 /**
  * 菜单格式默认为以下
- * interface menu {
- *   label: string,
- *   to?: string,
- *   children?: menu[]
- * }
  */
-export const menu = [
+interface Menu {
+  label: string,
+  to?: string,
+  children?: Menu[]
+}
+
+export const menu: Menu[] = [
   {
     label: '指引',
     children: [
