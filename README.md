@@ -1,5 +1,6 @@
-# ViPress <mark>v0.13.0-beta.1</mark>
+# ViPress 
 
+<mark>v0.13.0-beta.1</mark>
 ## 什么是 ViPress ?
 
 ViPress 是一款为 Vue2/Vue3 组件开发场景而生的文档工具，支持 Markdown 文档生成。
