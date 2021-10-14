@@ -10,4 +10,3 @@ export default {
   homeRoute: '/readme',
   plugins: [ vuePlugin() ]
 }
-  
