@@ -30,11 +30,11 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import Navs from './components/navs/index.vue'
 import Banner from './components/banner/index.vue'
 import { TOCData } from './store'
-import { menu } from '../client.js'
+import { menu } from '../client.ts'
 import config from '@@vipress-plugin-config'
 
 export default {
