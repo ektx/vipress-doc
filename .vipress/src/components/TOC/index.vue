@@ -65,9 +65,8 @@ export default {
         if (activeItem.length) {
           const current = activeItem.reverse()[0]
           current.active = true
-          debugger
         }
-      }, 100)
+      }, 50)
     }
   },
   unmounted() {
@@ -96,8 +95,8 @@ export default {
       line-height: 2;
       overflow: hidden;
       transition: 
-        color .4s ease-in,
-        border .4s ease-in;
+        color .2s ease-in,
+        border .2s ease-in;
 
       &.is-active {
         color: var(--page-hold-color);

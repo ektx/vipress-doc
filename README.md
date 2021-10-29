@@ -1,4 +1,6 @@
-# ViPress <mark>v0.12.4</mark>
+# ViPress
+
+<mark>v0.13.0-beta.1</mark>
 
 ## 什么是 ViPress ?
 
