@@ -12,18 +12,19 @@
 
   ```sh
   # npm 6.x
-  npm init vipress@latest my-app -t vue3
+  npm init vipress@latest my-app
 
-  # npm 7+, 需要额外的双横线：
-  npm init vipress@latest my-app -- --t vue3
+  # npm 7+
+  npm init vipress@latest my-app
 
   # yarn
-  yarn create vipress@latest my-app --t vue3
+  yarn create vipress@latest my-app
   ```
 
-  支持的模板有：
+  然后选择你需要的模板，支持的模板有：
 
-  - vue3 （默认模板）
+  - vue3-ts
+  - vue3 
   - vue2
 
 
@@ -33,8 +34,14 @@
 # 运行服务
 npm run dev
 
-# 打包服务
+# 打包文档服务
 npm run build
+```
+
+如果你在使用 vipress 来做为你的组件包工具时，你还可以通过以下方式来打包你的组件库，最终会在你的项目目录下生成一个 **lib** 的目录。
+
+```sh
+npm run build lib
 ```
 
 ## 更新模板
@@ -50,6 +57,14 @@ npm init vipress@latest -- --update
 ```
 
 > ⚠ 更新后，会覆盖之前的文件，需要手动调整。
+
+## 初始化项目
+
+如果你在一个原有的项目中，希望添加 vipress 的功能，你可以运行以下方式来初始化项目（初始化项目并不会删除你的文件）
+
+```sh 
+npm init vipress@latest -- --init
+```
 
 ## 验证文档
 
