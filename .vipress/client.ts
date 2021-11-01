@@ -1,3 +1,13 @@
+import type { App } from 'vue'
+
+/**
+ * 用于方便扩展 vue 的功能
+ * @param {App} app vue app
+ */
+ export function init(app: App) {
+  // app.use(XXX)
+}
+
 /**
  * 菜单格式默认为以下
  */
@@ -22,6 +32,10 @@ export const menu: Menu[] = [
       {
         label: '设置',
         to: '/docs/setting'
+      },
+      {
+        label: '创建第一个组件库文档',
+        to: '/docs/lib'
       }
     ]
   },

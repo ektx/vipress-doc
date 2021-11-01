@@ -38,7 +38,7 @@ html.dark {
   --page-hold-bg-color: rgba(208, 208, 208, .15);
 
   --page-bg-color: #222;
-  --page-txt-color: #eee;
+  --page-txt-color: #f5f5f5;
   --page-info-color: #777;
   
   --header-bg-color: rgba(60, 60, 60, .8);
@@ -68,37 +68,14 @@ html.dark {
   --codebox-hover-shadow: rgba(0, 0, 0, 1);
 }
 
-::-webkit-scrollbar {
-	width: 3px;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: currentColor;
-	border-radius: 3px;
-}
-
-::-webkit-scrollbar-track {
-	margin: 62px 0 2px 0;
-}
-
 html {
 	scroll-behavior: smooth;
-  color: transparent;
-  transition: color .3s ease-in-out;
-  
-  &:hover {
-    color: var(--scroll-thumb-color);
-  }
-  
-  &::-webkit-scrollbar-track {
-    margin: 62px 0 2px 0;
-  }
 }
 
 body {
   overscroll-behavior: none;
   background-color: var(--page-bg-color);
-  transition: background .4s ease-out;
+  transition: background .3s ease-in-out;
   will-change: background;
 }
 

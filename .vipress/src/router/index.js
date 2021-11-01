@@ -9,7 +9,7 @@ const scrollBehavior = function (to, from, savedPosition) {
     }
   }
   if (savedPosition) {
-    return savedPosition
+    return savedPosition;
   } else {
     return { top: 0 }
   }
