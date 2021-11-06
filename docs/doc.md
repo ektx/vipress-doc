@@ -16,40 +16,34 @@ vipress 是以 markdown 为文档的基础，通过扩展赋予更多的表现�
 
 ## 文件内嵌
 
-### Markdown 文件内嵌
+格式: `#[codeBox](./example.vue)`
 
-格式: `#[template](path)`
+文件引用可以让你既能使用到 markdown 的语法，又可以让 vue 在编写时，具有文档编辑器的智能提示。
 
-vipress 支持文件的一级引用。
+这里我们对 README.md 进行改造。
 
-假设你有以下2个文件 parent.md 与 child.md 文件，你可以使用以下方法在 parent.md 中引用 child.md 内容。最终输出是同一个文件。
+首先，新创建一个 README 的文件夹，将之前的 README.md 文件移入，修改名称为 index.md 。
 
-目录结构:
+然后，在 README 文件夹下创建一个 demo.vue 文件，输入以下内容用于测试。
 
-```
----- project            # 项目根目录
-  ├──── parent.md       # 父级文件
-  ├──── child.md        # 子级文件
-```
+```vue
+<template>
+  <h1>{{ msg }}</h1>
+</template>
 
-parent.md
-
-```
- # parent file
-
- #[md](./child.md) 
-```
-
-child.md
-
-```
- # child file
+<script>
+export default {
+  data() {
+    return {
+      msg: 'hello world'
+    }
+  }
+}
+</script>
 ```
 
-合并为:
+最后，我们在 index.md 文件中添加以下内容。
 
 ```
- # parent
-
- # child file
+ #[codeBox](./demo.vue)
 ```
