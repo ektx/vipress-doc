@@ -4,7 +4,7 @@ import type { App } from 'vue'
  * 用于方便扩展 vue 的功能
  * @param {App} app vue app
  */
- export function init(app: App) {
+export function init(app: App) {
   // app.use(XXX)
 }
 
