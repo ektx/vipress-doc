@@ -60,11 +60,16 @@ npm init vipress@latest -- --update
 
 ## 初始化项目
 
-如果你在一个原有的项目中，希望添加 vipress 的功能，你可以运行以下方式来初始化项目（初始化项目并不会删除你的文件）
+如果你想在现有的项目中，添加 vipress 的功能，你可以运行以下方式来启用  vipress 
 
 ```sh 
+# npm 7+
 npm init vipress@latest -- --init
 ```
+
+然后根据提示选择你要使用的模板:
+
+![npm-init](/npm-init.png)
 
 ## 验证文档
 

@@ -1,6 +1,6 @@
 {
   "name": "vipress-doc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "vipress 使用文档",
   "scripts": {
     "dev": "vipress",
