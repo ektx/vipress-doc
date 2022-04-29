@@ -62,7 +62,7 @@ npm run dev
 
 浏览器效果如下：
 
-![](/welcomePage.png)  
+![](/welcomePage.webp)  
 
 ## 添加项目文档
 
