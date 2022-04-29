@@ -23,6 +23,8 @@
 
   然后选择你需要的模板，支持的模板有：
 
+  ![npm-init](/create.webp)
+
   - vue3-ts
   - vue3 
   - vue2
@@ -69,7 +71,7 @@ npm init vipress@latest -- --init
 
 然后根据提示选择你要使用的模板:
 
-![npm-init](/npm-init.png)
+![npm-init](/npm-init.webp)
 
 ## 验证文档
 

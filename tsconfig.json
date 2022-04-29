@@ -11,5 +11,5 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"]
   },
-  "include": ["doc/**/*.vue", ".vipress/client.ts", ".vipress/server.ts"],
+  "include": ["**/*.vue", ".vipress/client.ts", ".vipress/server.ts"]
 }
