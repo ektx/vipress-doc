@@ -7,8 +7,7 @@
     "build": "vipress build"
   },
   "repository": {
-    "type": "git",
-    "url": "http://git.qixin007.com/kgp/atlas/vipress-doc.git"
+    "type": "git"
   },
   "keywords": [
     "vipress",
